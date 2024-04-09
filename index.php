@@ -15,6 +15,10 @@
       <div  class="burger"></div> 
     </div>
   </header>
+
+    <a href="index.php">HOME</a>
+    <a href="login.php">Login</a>
+
     <?php
         /*//Connection to the database
         $servername = "127.0.0.1:3306";
