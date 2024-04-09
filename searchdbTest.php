@@ -13,16 +13,23 @@
         <a href="searchdbTest.php">search db test</a>
 
         <form action="" method="post">
-    <input type="text" name="search" placeholder="Search...">
+    <input type="text" name="search" placeholder="Suchen">
     <select name="sort">
-        <option value="">Sort by</option>
+        <option value="">Sortieren</option>
         <option value="kurztitle_asc">Name A-Z</option>
         <option value="kurztitle_desc">Name Z-A</option>
         <option value="autor_asc">Author A-Z</option>
         <option value="autor_desc">Author Z-A</option>
-        <option value="nummer_asc">Number Ascending</option>
-        <option value="nummer_desc">Number Descending</option>
+        <option value="nummer_asc">Nummer Aufsteigend</option>
+        <option value="nummer_desc">Number Absteigend</option>
     </select>
+    <select name="filter">
+    <option value="">Filtern</option>
+    <option value="autor">Author</option>
+    <option value="title">Title</option>
+    <option value="kategorie">Kategorie</option>
+    <option value="kurztitle">Kurztitle</option>
+</select>
     <input type="submit" value="Submit">
 </form>
 
@@ -40,8 +47,9 @@
         }
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $search = $_POST['search'];
+            $search = htmlspecialchars(trim($_POST['search']));
             $sort = $_POST['sort'];
+            $filter = $_POST['filter'];
         
             // Connect to the database
             $servername = "127.0.0.1:3306";
@@ -51,7 +59,26 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
             // Prepare the SQL query
-            $query = "SELECT * FROM buecher WHERE kurztitle LIKE :search";
+            $query = "SELECT * FROM buecher WHERE ";
+        
+            // Determine the filter
+            switch ($filter) {
+                case 'autor':
+                    $query .= "autor LIKE :search";
+                    break;
+                case 'title':
+                    $query .= "title LIKE :search";
+                    break;
+                case 'kategorie':
+                    $query .= "kategorie LIKE :search";
+                    break;
+                case 'kurztitle':
+                    $query .= "kurztitle LIKE :search";
+                    break;
+                default:
+                    $query .= "autor LIKE :search OR title LIKE :search OR kategorie LIKE :search OR kurztitle LIKE :search";
+                    break;
+            }
         
             // Determine the sort order
             switch ($sort) {
