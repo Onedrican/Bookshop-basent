@@ -7,8 +7,16 @@
     <title>Document</title>
 </head>
 <body>
+  <header>
+    <p>Bookshop BASENT</p>
+    <div class="burgermenu">
+      <div  class="burger"></div>
+      <div  class="burger"></div>
+      <div  class="burger"></div> 
+    </div>
+  </header>
     <?php
-        //Connection to the database
+        /*//Connection to the database
         $servername = "127.0.0.1:3306";
         $username = "rundb";
         $password = "runpass";
@@ -45,7 +53,7 @@
             }
           } else {
             echo "0 results";
-          }
+          }*/
     ?>
 </body>
 </html>
