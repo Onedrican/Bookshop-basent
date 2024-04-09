@@ -27,3 +27,23 @@ header {
     top: -2.3EM; 
     right: -30em; 
 }
+/* Für search */
+form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+input[type="text"], select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

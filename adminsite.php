@@ -2,11 +2,10 @@
 session_start();
 
 if (isset($_POST['signout'])) {
-    // Unset all of the session variables
+    //Reset Session variabel
     $_SESSION = array();
 
-    // If it's desired to kill the session, also delete the session cookie.
-    // Note: This will destroy the session, and not just the session data!
+    //Destruction of the coockies and session
     if (ini_get("session.use_cookies")) {
         $params = session_get_cookie_params();
         setcookie(session_name(), '', time() - 42000,
@@ -14,21 +13,20 @@ if (isset($_POST['signout'])) {
             $params["secure"], $params["httponly"]
         );
     }
-
-    // Finally, destroy the session.
     session_destroy();
 
-    // Redirect to login page
+    // Redirect to login 
     header('Location: login.php');
     exit;
 }
-
+//Mysql Connection
 $servername = "127.0.0.1:3306";
 $dbusername = "rundb";
 $dbpassword = "runpass";
 
 $conn = new PDO("mysql:host=$servername;dbname=books", $dbusername, $dbpassword);
 
+//user authentication
 if (isset($_POST['signin'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -53,6 +51,7 @@ if (isset($_POST['signin'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
