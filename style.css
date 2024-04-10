@@ -1,32 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Vesper+Libre:wght@400;500;700;900&display=swap');
 
-body{
+body {
     background-color: rgb(0, 0, 0);
     font-family: Vesper Libre, serif;
     color: white;
     margin: 0;
     padding: 0;
 }
+
 header {
-    padding: 5px;
+    background: rgb(23, 22, 22);
+    padding: 1px;
+    
+}
+
+#name {
+    width:70%;
     padding-left: 5px;
     text-align: left;
-    background: rgb(23,22,22);
+    font-size: 45px;
     color: white;
-    font-size: 40px;
-  }
+
+    
+}
+
 .burger {
     width: 35px;
     height: 5px;
     background-color: white;
-    margin: 6px 0;
-    ;
+    color: white;
+    margin: 6px;
 }
-.burgermenu{
-    position: relative; 
-    top: -2.3EM; 
-    right: -30em; 
+
+.dropdown {
+    float:right;
+    width:5%;
+    margin-top: 1%;
+
 }
+
 /* Für search */
 form {
     display: flex;
@@ -34,7 +46,8 @@ form {
     gap: 10px;
 }
 
-input[type="text"], select {
+input[type="text"],
+select {
     padding: 5px;
     font-size: 16px;
 }
@@ -46,4 +59,27 @@ input[type="submit"] {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: red;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(207, 23, 23, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    margin-right: 5%;
+    color: beige;
+}
+
+.dropdown:hover .dropdown-content {    
+    display: block;
+}
+
+  
+
+.dropdown :hover{
+    background-color: red;
 }

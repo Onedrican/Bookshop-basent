@@ -8,11 +8,17 @@
 </head>
 <body>
   <header>
-    <p>Bookshop BASENT</p>
-    <div class="burgermenu">
-      <div  class="burger"></div>
-      <div  class="burger"></div>
-      <div  class="burger"></div> 
+    <span id = "name">Bookshop BASENT</span>
+    <div class="dropdown">
+        <div  class="burger"><p></p></div>
+        <div  class="burger"></div>
+        <div  class="burger"></div> 
+        <div class="dropdown-content">
+        <a href="index.php">Home</a></br>
+        <a href="#">Über Uns</a></br>
+        <a href="#">Rechtliches</a></br>
+        <a href="login.php">Admin Login</a>
+        </div>
     </div>
   </header>
 
@@ -22,17 +28,6 @@
 
     <?php
  //Connection to the database
- $servername = "127.0.0.1:3306";
- $username = "rundb";
- $password = "runpass";
- try {
-     $conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
-     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     echo "Connected successfully";
- } catch(PDOException $e) {
-     echo "Connection failed: " . $e->getMessage();
- }
-
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $search = htmlspecialchars(trim($_POST['search']));
      $sort = $_POST['sort'];
