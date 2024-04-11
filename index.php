@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filter = $_POST['filter'];
 
     // Define the number of results per page
-    define('RESULTS_PER_PAGE', 10);
+    define('RESULTS_PER_PAGE', 12);
 
     // Get the current page number
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -128,19 +128,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      if (count($results) > 0) {
         foreach ($results as $book) {
             echo '<div class="result_box">';
+            echo '<span class="book1"><img class="bild1" src=pictures/book.webp></span>';
             $kurztitle = substr($book['kurztitle'], 0, 20); // Limit the output to the first 20 characters
             echo "<h2>" . $kurztitle . "</h2>";
             echo "<p>Author: " . $book['autor'] . "</p>";
-            $randomPic = rand(1,3);
-            if ($randomPic == 1) {
-                echo '<span class="book1"><img class="bild1" src=pictures/blaues_buch.jpg></span>';
-            }
-            elseif ($randomPic == 2) {
-                echo '<span class="book2"><img class="bild2" src=pictures/gelbes_buch.jpg></span>';
-            }
-            else {
-                echo '<span class="book3"><img class="bild3" src=pictures/rotes_buch.jpg></span>';
-            }
+            
+           
             echo "</div>";
         }
     } else {
@@ -169,8 +162,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Display the Frontpage Books
+    echo '<h1>Die Bücher des Tages</h1>';
     foreach ($results as $book) {
         echo '<span class="frontpage_books">';
+        echo '<span class="book1"><img class="bild1" src=pictures/book.webp></span>';
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
