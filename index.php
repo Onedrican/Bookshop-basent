@@ -123,9 +123,27 @@
 </form>
 <label for="bps">Vie viele </label>
 
+<span id="book1"><img class="bild1" src=blaues_Buch.jpg></span>
+<span id="book2"></span>
+<span id="book3"></span>
+<span id="book4"></span>
+<span id="book5"></span>
+<span id="book6"></span>
+<span id="book7"></span>
+<span id="book8"></span></br>
+<span id="book9"></span>
+<span id="book10"></span>
+<span id="book11"></span>
+<span id="book12"></span>
+<span id="book13"></span>
+<span id="book14"></span>
+<span id="book15"></span>
+<span id="book16"></span>
+
 <select onChange="if (this.value) window.location.href=this.value" id="bps">
     <option selected="selected" value="twelve">12 Bücher pro Seite</option>
         <option value= "searchdbTest.php">18 Bücher pro Seite</option>
 </select>
+
 </body>
 </html>
