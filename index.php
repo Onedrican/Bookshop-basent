@@ -26,6 +26,8 @@
         <a href="login.php">Login</a>
         <a href="searchdbTest.php">search db test</a>
 
+
+
     <?php
  //Connection to the database
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -119,6 +121,11 @@
 </select>
     <input type="submit" value="Submit">
 </form>
+<label for="bps">Vie viele </label>
 
+<select onChange="if (this.value) window.location.href=this.value" id="bps">
+    <option selected="selected" value="twelve">12 Bücher pro Seite</option>
+        <option value= "searchdbTest.php">18 Bücher pro Seite</option>
+</select>
 </body>
 </html>

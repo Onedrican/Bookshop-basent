@@ -47,7 +47,9 @@ header {
     padding: 12px 16px;
     z-index: 1;
     color: beige;
-    margin-left: -12%;
+    float: left;
+    width: 10%;
+    
 }
 
 .dropdown:hover .dropdown-content {    
