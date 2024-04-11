@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Vesper+Libre:wght@400;500;700;900&display=swap');
 
+* {
+    text-decoration: none;
+}
+
 body {
     background-color: rgb(0, 0, 0);
     font-family: Vesper Libre, serif;
@@ -13,15 +17,20 @@ header {
     padding: 1px;
     
 }
+.frontpage_books {
+    background-color: #4CAF50;
+}
+
+.result_box {
+    background-color: darkblue;
+}
 
 #name {
     width:70%;
     padding-left: 5px;
     text-align: left;
     font-size: 45px;
-    color: white;
-
-    
+    color: white;   
 }
 
 .burger {
@@ -36,8 +45,12 @@ header {
     float:right;
     width:5%;
     margin-top: 1%;
-
 }
+
+.dropdown a {
+    color: white;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -48,18 +61,15 @@ header {
     z-index: 1;
     color: beige;
     float: left;
-    width: 10%;
-    
+    width: 10%; 
 }
 
 .dropdown:hover .dropdown-content {    
     display: block;
 }
 
-  
-
 .dropdown :hover{
-    background-color: red;
+    background-color: rgb(23, 22, 22);
 }
 
 /* Für search */
@@ -67,21 +77,22 @@ form {
     display: flex;
     justify-content: center;
     gap: 10px;
+    color: white;
 }
 
 input[type="text"],
 select {
     padding: 5px;
     font-size: 16px;
+    background-color: rgb(23, 22, 22);
+    color: white;
 }
 
 input[type="submit"] {
     padding: 5px 10px;
     font-size: 16px;
-    background-color: #4CAF50;
+    background-color: rgb(23, 22, 22);
     color: white;
     border: none;
     cursor: pointer;
 }
-
-  
