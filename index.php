@@ -117,6 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
      
      // Display the results
+     echo "<div>";
      if (count($results) > 0) {
         foreach ($results as $book) {
             echo '<div class="result_box">';
@@ -124,14 +125,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $kurztitle = substr($book['kurztitle'], 0, 20); // Limit the output to the first 20 characters
             echo "<h2>" . $kurztitle . "</h2>";
             echo "<p>Author: " . $book['autor'] . "</p>";
-            
-           
             echo "</div>";
         }
     } else {
         echo "No results found.";
     }
-
+    echo "</div>";
 }
     //Display 12 Books 
     // Prepare the SQL query
@@ -145,6 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Display the Frontpage Books
+    echo "<div>";
     echo '<h1>Die Bücher des Tages</h1>';
     foreach ($results as $book) {
         echo '<span class="frontpage_books">';
@@ -154,6 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
         echo "</span>";
     }
+    echo "</div>";
 ?>
 </body>
 </html>
