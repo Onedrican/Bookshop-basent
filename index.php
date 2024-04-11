@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      // Display the results
      if (count($results) > 0) {
         foreach ($results as $book) {
-            echo '<span class="result_box">';
+            echo '<div class="result_box">';
             $kurztitle = substr($book['kurztitle'], 0, 20); // Limit the output to the first 20 characters
             echo "<h2>" . $kurztitle . "</h2>";
             echo "<p>Author: " . $book['autor'] . "</p>";
@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             else {
                 echo '<span id="book3"><img class="bild3" src=pictures/rotes_buch.jpg></span>';
             }
-            echo "</span>";
+            echo "</div>";
         }
     } else {
         echo "No results found.";
@@ -168,13 +168,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Fetch the results
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Display the results
+    // Display the Frontpage Books
     foreach ($results as $book) {
-        echo '<span class="frontpage_books">';
+        echo '<div class="frontpage_books">';
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
-        echo '</span>';
+        echo "</div>";
     }
 ?>
 </body>
