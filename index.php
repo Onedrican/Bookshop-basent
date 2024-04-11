@@ -58,6 +58,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sort = $_POST['sort'];
     $filter = $_POST['filter'];
 
+    // Define the number of results per page
+    define('RESULTS_PER_PAGE', 10);
+
+    // Get the current page number
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    // Calculate the SQL LIMIT starting number
+    $start_limit = ($page - 1) * RESULTS_PER_PAGE;
+
     // Prepare the SQL query
     $query = "SELECT * FROM buecher WHERE ";
 
@@ -102,13 +111,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
     }
 
+    // Add the LIMIT clause to the query
+    $query .= " LIMIT :start_limit, :results_per_page";
+
      // Execute the query
      $stmt = $conn->prepare($query);
-     $stmt->execute(['search' => "%$search"]);
+     $stmt->bindValue(':start_limit', $start_limit, PDO::PARAM_INT);
+     $stmt->bindValue(':results_per_page', RESULTS_PER_PAGE, PDO::PARAM_INT);
+     $stmt->bindValue(':search', "%$search", PDO::PARAM_STR);
+     $stmt->execute();
  
      // Fetch the results
      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
- 
+     
      // Display the results
      if (count($results) > 0) {
         foreach ($results as $book) {
@@ -131,6 +146,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "No results found.";
     }
+
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM buecher WHERE autor LIKE :search OR title LIKE :search OR kategorie LIKE :search OR kurztitle LIKE :search");
+    $stmt->execute(['search' => "%$search"]);
+    $total_results = $stmt->fetchColumn();
+    $total_pages = ceil($total_results / RESULTS_PER_PAGE);
+
+    // Display the pagination
+    for ($i = 1; $i <= $total_pages; $i++) {
+        echo "<a href='index.php?page=" . $i . "'>" . $i . "</a> ";
+}
 }
     //Display 12 Books 
     // Prepare the SQL query

@@ -86,6 +86,7 @@ select {
     font-size: 16px;
     background-color: rgb(23, 22, 22);
     color: white;
+    border: none;
 }
 
 input[type="submit"] {
