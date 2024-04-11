@@ -18,11 +18,32 @@ header {
     
 }
 .frontpage_books {
-    background-color: #4CAF50;
+    width: 16.5%;
+    float: left;
+    height: 400px;
+    outline: auto;
 }
 
 .result_box {
     background-color: darkblue;
+    width: 16.5%;
+    float: left;
+    height: 400px;
+    outline: auto;
+}
+.bild1{
+    max-width: 50%;
+    margin: auto;
+}
+.bild2{
+    max-width: 50%;
+    align-items: center;
+}
+.bild3{
+    max-width: 50%;
+    align-items: center;
+    display: flex; 
+    justify-content: center;
 }
 
 #name {

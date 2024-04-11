@@ -133,13 +133,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p>Author: " . $book['autor'] . "</p>";
             $randomPic = rand(1,3);
             if ($randomPic == 1) {
-                echo '<span id="book1"><img class="bild1" src=pictures/blaues_buch.jpg></span>';
+                echo '<span class="book1"><img class="bild1" src=pictures/blaues_buch.jpg></span>';
             }
             elseif ($randomPic == 2) {
-                echo '<span id="book2"><img class="bild2" src=pictures/gelbes_buch.jpg></span>';
+                echo '<span class="book2"><img class="bild2" src=pictures/gelbes_buch.jpg></span>';
             }
             else {
-                echo '<span id="book3"><img class="bild3" src=pictures/rotes_buch.jpg></span>';
+                echo '<span class="book3"><img class="bild3" src=pictures/rotes_buch.jpg></span>';
             }
             echo "</div>";
         }
@@ -170,11 +170,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Display the Frontpage Books
     foreach ($results as $book) {
-        echo '<div class="frontpage_books">';
+        echo '<span class="frontpage_books">';
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
-        echo "</div>";
+        echo "</span>";
     }
 ?>
 </body>
