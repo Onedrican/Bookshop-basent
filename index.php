@@ -21,27 +21,31 @@
         </div>
     </div>
   </header>
+</br>
+    <span id="searchbar">
         <form action="" method="post">
-        <input type="text" name="search" placeholder="Suchen">
-        <select name="sort">
-            <option value="">Sortieren</option>
-            <option value="kurztitle_asc">Name A-Z</option>
-            <option value="kurztitle_desc">Name Z-A</option>
-            <option value="autor_asc">Author A-Z</option>
-            <option value="autor_desc">Author Z-A</option>
-            <option value="nummer_asc">Nummer Aufsteigend</option>
-            <option value="nummer_desc">Number Absteigend</option>
-        </select>
-        <select name="filter">
-        <option value="">Filtern</option>
-        <option value="autor">Author</option>
-        <option value="title">Title</option>
-        <option value="kategorie">Kategorie</option>
-        <option value="kurztitle">Kurztitle</option>
-    </select>
-        <input type="submit" value="Submit">
-    </form>
-
+            <input type="text" name="search" placeholder="Suchen">
+            <select name="sort">
+                <option value="">Sortieren</option>
+                <option value="kurztitle_asc">Name A-Z</option>
+                <option value="kurztitle_desc">Name Z-A</option>
+                <option value="autor_asc">Author A-Z</option>
+                <option value="autor_desc">Author Z-A</option>
+                <option value="nummer_asc">Nummer Aufsteigend</option>
+                <option value="nummer_desc">Number Absteigend</option>
+            </select>
+            <select name="filter">
+            <option value="">Filtern</option>
+            <option value="autor">Author</option>
+            <option value="title">Title</option>
+            <option value="kategorie">Kategorie</option>
+            <option value="kurztitle">Kurztitle</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </span>
+</br>
+</br>
 
 
 <?php
@@ -128,7 +132,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "</div>";
         }
     } else {
-        echo "No results found.";
+        echo '<div id= "noresults">';
+        echo "No results found :(";
+        '</div>';
     }
     echo "</div>";
 }
@@ -145,13 +151,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Display the Frontpage Books
     echo "<div>";
-    echo '<h1>Die Bücher des Tages</h1>';
+    echo '<h1 id="botd">Die Bücher des Tages</h1>';
     foreach ($results as $book) {
         echo '<span class="frontpage_books">';
         echo '<span class="book1"><img class="bild1" src=pictures/book.webp></span>';
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
+        echo"</div>";
         echo "</span>";
     }
     echo "</div>";
