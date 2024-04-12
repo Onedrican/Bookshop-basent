@@ -20,7 +20,8 @@ header {
     
 }
 #search1{
-    padding: 1%;
+    font-size: 30px;
+    text-align: center;
 }
 
 #searchbar{
@@ -28,7 +29,10 @@ header {
     /*background: rgb(23, 22, 22);*/
     position: relative;
     align-items: center;
-
+    
+#prof{
+    color: black;
+}
    
 
 }
