@@ -19,14 +19,16 @@ header {
 
     
 }
+#search1{
+    padding: 1%;
+}
+
 #searchbar{
     color: white;
     /*background: rgb(23, 22, 22);*/
     position: absolute;
     align-items: center;
-    padding: 1%;
-    
-    
+   
 
 }
 #noresults{
@@ -157,7 +159,7 @@ input[type="submit"] {
 }
 
 .book1 :hover{
-    background-color: green
+    background-color: green;
 }
 .frontpage p :hover{
     background-color: blueviolet;

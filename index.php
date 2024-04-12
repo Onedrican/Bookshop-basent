@@ -22,7 +22,8 @@
     </div>
   </header>
 </br>
-    <span id="searchbar">
+<span id = "search1">"Suche hier nach deinem Buch"</span>
+    <div id="searchbar">
         <form action="" method="post">
             <input type="text" name="search" placeholder="Suchen">
             <select name="sort">
@@ -43,19 +44,19 @@
             </select>
             <input type="submit" value="Submit">
         </form>
-    </span>
+</div>
 </br>
 </br>
 
 
 <?php
-    //error_reporting(E_ERROR | E_PARSE);
-    //Connection to the database
-    $servername = "127.0.0.1:3306";
-    $username = "rundb";
-    $password = "runpass";
-    $conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//error_reporting(E_ERROR | E_PARSE);
+//Connection to the database
+$servername = "127.0.0.1:3306";
+$username = "rundb";
+$password = "runpass";
+$conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 //Connection to the database
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
