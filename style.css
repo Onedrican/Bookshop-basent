@@ -19,20 +19,7 @@ header {
 
     
 }
-#search1{
-    font-size: 30px;
-    text-align: center;
-}
 
-#searchbar{
-    color: white;
-    /*background: rgb(23, 22, 22);*/
-    position: relative;
-    align-items: center;
-    
-#prof{
-    color: black;
-}
    
 .filler_p {
     font-family: Vesper Libre, serif;
@@ -44,24 +31,24 @@ header {
     font-size: 40px;
 }
 
-}
+
 #noresults{
     padding: 1%;
 }
 .frontpage_books {
-    width: 13%;
+    width: 21%;
     float: left;
-    height: 400px;
+    height: 450px;
     text-align: center;
-    margin: 1.8%;
+    margin: 2%;
 }
 
 .result_box {
-    width: 13%;
+    width: 21%;
     float: left;
-    height: 400px;
+    height: 450px;
     text-align: center;
-    margin: 1.8%;
+    margin: 2%;
 }
 .book1{
     display: flex;
@@ -111,24 +98,15 @@ header {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px black;
     padding: 12px 16px;
+    z-index: 2;
     color: beige;
     float: right;
     width: 15%; 
     font-size: 20px;
     margin-top: 35%;
 }
-.dropdown1{
-    background-color: transparent;
-    padding: 1%;
-}
-.dropdown1:hover .dropdown-content {    
-    display: block;
-}
 
 .dropdown:hover .dropdown-content {    
-    display: block;
-}
-.dropdown-content:hover .dropdown-content {    
     display: block;
 }
 
@@ -137,53 +115,66 @@ header {
 }
 
 /* Für search */
+#search1{
+    text-align: center;
+}
+
+#searchbar{
+    color: white;
+    /*background: rgb(23, 22, 22);*/
+    position: relative;
+    align-items: center;
+}
+    
+#prof{
+    color: black;
+}
 form {
     display: flex;
     justify-content: center;
     gap: 10px;
     color: white;
+    font-family: Vesper Libre, serif;
 }
 
 input[type="text"],
 select {
     padding: 5px;
-    font-size: 16px;
+    font-size: 25px;
     background-color: rgb(23, 22, 22);
     color: white;
     border: none;
+    font-family: Vesper Libre, serif;
 }
 
 input[type="submit"] {
     padding: 5px 10px;
-    font-size: 16px;
+    font-size: 25px;
     background-color: rgb(23, 22, 22);
     color: white;
     border: none;
     cursor: pointer;
+    font-family: Vesper Libre, serif;
 }
 #botd{
     padding: 1%;
 }
 .bookdrop{
     display: none;
-    position: relative;
-    background-color: rgb(23, 22, 22);
+    position: fixed;
+    background-color: rgb(197, 1, 1);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px black;
     padding: 12px 16px;
     z-index: 2;
-    color: beige;
+    color: red;
     float: right;
     width: 15%; 
     font-size: 20px;
 }
-.book1:hover .bookdrop-content {    
-    display: block;
-}
 
-.book1 :hover{
-    background-color: green;
-}
-.frontpage p :hover{
+
+.frontpage_books :hover .bookdrop{
     background-color: blueviolet;
+    display: block;
 }

@@ -27,7 +27,7 @@
 <br>
 
 <div id="searchbar">
-<div id = "search1">Suche hier nach deinem Buch<a id="prof">kkddddddffsik</a></div>
+<div id = "search1"><h1>Suche hier nach deinem Buch<a id="prof">kkdddddfffffffdffdsasdsik</a><h1></div>
     <form method="post">
         <input type="text" name="search" placeholder="Suchen">
         <select name="sort">
@@ -163,10 +163,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
+        echo "</span>";
         echo"<div class= 'bookdrop'>";
         echo "Hahdf";
+        echo "Hahdf";
+        echo "Hahdf";
+        echo "Hahdf";
+        echo "Hahdf";
         echo"</div>";
-        echo "</span>";
     }
 echo "</div>";
 ?>
