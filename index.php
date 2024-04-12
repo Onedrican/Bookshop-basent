@@ -159,18 +159,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo '<h1 id="botd">Die Bücher des Tages</h1>';
     foreach ($results as $book) {
         echo '<span class="frontpage_books">';
-        echo '<span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span>';
+        echo '<a href="alle_infos.php"><span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span></a>';
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
         echo "</span>";
-        echo"<div class= 'bookdrop'>";
-        echo "Hahdf";
-        echo "Hahdf";
-        echo "Hahdf";
-        echo "Hahdf";
-        echo "Hahdf";
-        echo"</div>";
     }
 echo "</div>";
 ?>
