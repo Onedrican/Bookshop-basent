@@ -34,6 +34,15 @@ header {
     color: black;
 }
    
+.filler_p {
+    font-family: Vesper Libre, serif;
+    font-size: 30px;
+}
+
+.filler_h1 {
+    font-family: Vesper Libre, serif;
+    font-size: 40px;
+}
 
 }
 #noresults{
