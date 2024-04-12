@@ -38,8 +38,8 @@ $dbpassword = "runpass";
 $conn = new PDO("mysql:host=$servername;dbname=books", $dbusername, $dbpassword);
 
 if (isset($_POST['signin'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = htmlspecialchars(trim($_POST['username']));;
+    $password = htmlspecialchars(trim($_POST['password']));;
 
     $query = "SELECT * from admin WHERE username = :username AND password = :password";
     $stmt = $conn->prepare($query);
