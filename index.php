@@ -164,6 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
         echo "</span>";
+        echo '<div class="bookdrop-content">'. $book['autor'] . '</div>';
     }
 echo "</div>";
 ?>
