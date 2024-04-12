@@ -27,7 +27,7 @@
 <br>
 
 <div id="searchbar">
-<div id = "search1"><h1>Suche hier nach deinem Buch<a id="prof">kkdddddfffffffdffdsasdsik</a><h1></div>
+<div id = "search1"><h1>Suche hier nach deinem Buch</h1></div>
     <form method="post">
         <input type="text" name="search" placeholder="Suchen">
         <select name="sort">
@@ -68,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sort = $_POST['sort'];
     $filter = $_POST['filter'];
 
+    //Preparing beginning of querry
     $search = $search .= "%";
     $query = "SELECT * FROM buecher WHERE ";
 
@@ -115,8 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
     }
 
-
-
      // Execute the query
      $stmt = $conn->prepare($query);
      $stmt->bindValue(':search', "$search", PDO::PARAM_STR);
@@ -139,13 +138,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo '<div id= "noresults">';
         echo "No results found :(";
-        '</div>';
+        echo '</div>';
     }
     echo "</div>";
 }
     //Display 12 Books 
     // Prepare the SQL query
-    $query = "SELECT kurztitle, autor, kategorie FROM buecher WHERE autor IS NOT NULL AND autor != '' LIMIT 12";
+    $query = "SELECT kurztitle, autor, kategorie, id FROM buecher WHERE autor IS NOT NULL AND autor != '' LIMIT 12";
 
     // Execute the query
     $stmt = $conn->prepare($query);
@@ -159,12 +158,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo '<h1 id="botd">Die Bücher des Tages</h1>';
     foreach ($results as $book) {
         echo '<span class="frontpage_books">';
-        echo '<a href="alle_infos.php"><span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span></a>';
+        echo '<a><span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span></a>';
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
+        echo "<form action='alle_infos.php' method='GET'> <button type='submit' name='id' id='details-button' value='" . $book['id'] . "'>Details</button></form>";
         echo "</span>";
-        echo '<div class="bookdrop-content">'. $book['autor'] . '</div>';
     }
 echo "</div>";
 ?>
