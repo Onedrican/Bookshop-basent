@@ -8,21 +8,20 @@
 </head>
 <body>
 
-<div class="container col-4 border rounded bg-light mt-5" style='--bs-bg-opacity: .5;'>
-  <h1 class="text-center">Sign In</h1>
+<div>
+  <h1>Sign In</h1>
   <hr>
   <form method="post">
     <div class="mb-3">
-      <label for="username" class="form-label">username</label>
-      <input type="text" class="form-control" name="username" placeholder="Enter your username" autocomplete="off" required>
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="Enter your username" autocomplete="off" required>
     </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
-
+    <div>
+      <label for="password" >Password</label>
+      <input type="password" name="password" placeholder="Enter your password" required>
     </div>
-    <div class="mb-3">
-      <input type="submit" name="signin" value="Sign In" class="btn btn-primary">
+    <div>
+      <input type="submit" name="signin" value="Sign In">
     </div>
   </form>
 </div>
