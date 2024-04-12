@@ -158,10 +158,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
+        echo"<div class= 'bookdrop'>";
+        echo "Hahdf";
         echo"</div>";
         echo "</span>";
     }
-    echo "</div>";
+echo "</div>";
 ?>
 </body>
 </html>
