@@ -14,19 +14,19 @@
         <div  class="burger"></div>
         <div  class="burger"></div> 
         <div class="dropdown-content">
-        <a href="index.php">Home</a></br>
-        <a href="#">Über Uns</a></br>
-        <a href="#">Rechtliches</a></br>
+        <a href="index.php">Home</a><br>
+        <a href="Ueber">Über Uns</a><br>
+        <a href="rechtliches.php">Rechtliches</a><br>
         <a href="login.php">Admin Login</a>
         </div>
     </div>
   </header>
-</br>
-</br>
+<br>
+<br>
 
 <div id="searchbar">
 <div id = "search1">Suche hier nach deinem Buch<a id="prof">kkddddddffsik</a></div>
-    <form action="" method="post">
+    <form method="post">
         <input type="text" name="search" placeholder="Suchen">
         <select name="sort">
             <option value="">Sortieren</option>
@@ -47,8 +47,8 @@
         <input type="submit" value="Submit">
     </form>
 </div>
-</br>
-</br>
+<br>
+<br>
 
 
 <?php
@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      if (count($results) > 0) {
         foreach ($results as $book) {
             echo '<div class="result_box">';
-            echo '<span class="book1"><img class="bild1" src=pictures/book.webp></span>';
+            echo '<span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span>';
             $kurztitle = substr($book['kurztitle'], 0, 20); // Limit the output to the first 20 characters
             echo "<h2>" . $kurztitle . "</h2>";
             echo "<p>Author: " . $book['autor'] . "</p>";
@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo '<h1 id="botd">Die Bücher des Tages</h1>';
     foreach ($results as $book) {
         echo '<span class="frontpage_books">';
-        echo '<span class="book1"><img class="bild1" src=pictures/book.webp></span>';
+        echo '<span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span>';
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";

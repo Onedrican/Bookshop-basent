@@ -11,7 +11,7 @@
 <div class="container col-4 border rounded bg-light mt-5" style='--bs-bg-opacity: .5;'>
   <h1 class="text-center">Sign In</h1>
   <hr>
-  <form action="" method="post">
+  <form method="post">
     <div class="mb-3">
       <label for="username" class="form-label">username</label>
       <input type="text" class="form-control" name="username" placeholder="Enter your username" autocomplete="off" required>

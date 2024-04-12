@@ -57,7 +57,7 @@ if (isset($_POST['signin'])) {
 <body>
 <div class="container col-12 border rounded mt-3">
   <h1 class=" mt-3 text-center">Welcome, This your dashboard!! </h1>
-  <form action="" method="post">
+  <form method="post">
     <button type="submit" name='signout' > Sign Out</button>
   </form>
 </div>
