@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">$
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stlye.css">
     <title>Document</title>
 </head>
 <body>
 <?php
+if (!isset($_GET['id'])) {
+    $_GET['id'] = 1;
+}
 $servername = "127.0.0.1:3306";
 $username = "rundb";
 $password = "runpass";
@@ -23,17 +26,18 @@ $stmt->execute();
 // Fetch the results
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$kurztitle = $results[0];
-$katalog = $results[1];
-$author = $results[8];
+$book = $results[0];
 
 echo '<span class="frontpage_books">';
 echo '<a href="alle_infos.php"><span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span></a>';
-echo "<h2>" . $kurztitle['kurztitle'] . "</h2>";
-echo "<p>Katalog: " . $katalog['katalog'] . "</p>";
-echo "<p>Author: " . $author['author'] . "</p>";
-echo "<p>Author: " . $author['author'] . "</p>";
+echo "<h2>" . $book['kurztitle'] . "</h2>";
+echo "<p>Title: " . $book['title'] . "</p>";
+echo "<p>Author: " . $book['autor'] . "</p>";
+echo "<p>Katalog: " . $book['katalog'] . "</p>";
+echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
+echo "<p>Zustand: " . $book['zustand'] . "</p>";
 echo "</span>";
+
 ?>
 </body>
 </html>

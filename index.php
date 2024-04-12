@@ -162,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h2>" . $book['kurztitle'] . "</h2>";
         echo "<p>Author: " . $book['autor'] . "</p>";
         echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
-        echo "<form action='alle_infos.php' method='GET'> <button type='submit' name='id' id='details-button' value='" . $book['id'] . "'>Details</button></form>";
+        echo "<form action='alle_infos.php' method='GET'> <button type='submit' name='id' id='details-button'" . $book['id'] . ">Details</button></form>";
         echo "</span>";
     }
 echo "</div>";
