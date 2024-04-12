@@ -26,8 +26,9 @@ header {
 #searchbar{
     color: white;
     /*background: rgb(23, 22, 22);*/
-    position: absolute;
+    position: relative;
     align-items: center;
+
    
 
 }

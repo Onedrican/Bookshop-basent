@@ -23,27 +23,27 @@
   </header>
 </br>
 <span id = "search1">"Suche hier nach deinem Buch"</span>
-    <div id="searchbar">
-        <form action="" method="post">
-            <input type="text" name="search" placeholder="Suchen">
-            <select name="sort">
-                <option value="">Sortieren</option>
-                <option value="kurztitle_asc">Name A-Z</option>
-                <option value="kurztitle_desc">Name Z-A</option>
-                <option value="autor_asc">Author A-Z</option>
-                <option value="autor_desc">Author Z-A</option>
-                <option value="nummer_asc">Nummer Aufsteigend</option>
-                <option value="nummer_desc">Number Absteigend</option>
-            </select>
-            <select name="filter">
-            <option value="">Filtern</option>
-            <option value="autor">Author</option>
-            <option value="title">Title</option>
-            <option value="kategorie">Kategorie</option>
-            <option value="kurztitle">Kurztitle</option>
-            </select>
-            <input type="submit" value="Submit">
-        </form>
+<div id="searchbar">
+    <form action="" method="post">
+        <input type="text" name="search" placeholder="Suchen">
+        <select name="sort">
+            <option value="">Sortieren</option>
+            <option value="kurztitle_asc">Name A-Z</option>
+            <option value="kurztitle_desc">Name Z-A</option>
+            <option value="autor_asc">Author A-Z</option>
+            <option value="autor_desc">Author Z-A</option>
+            <option value="nummer_asc">Nummer Aufsteigend</option>
+            <option value="nummer_desc">Number Absteigend</option>
+        </select>
+        <select name="filter">
+        <option value="">Filtern</option>
+        <option value="autor">Author</option>
+        <option value="title">Title</option>
+        <option value="kategorie">Kategorie</option>
+        <option value="kurztitle">Kurztitle</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
 </div>
 </br>
 </br>
