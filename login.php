@@ -27,10 +27,6 @@
   </form>
 </div>
 
-        <a href="index.php">HOME</a>
-        <a href="login.php">Login</a>
-        <a href="searchdbTest.php">search db test</a>
-
 <?php
 session_start();
 

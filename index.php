@@ -15,7 +15,7 @@
         <div  class="burger"></div> 
         <div class="dropdown-content">
         <a href="index.php">Home</a><br>
-        <a href="Ueber">Über Uns</a><br>
+        <a href="Ueber_uns.php">Über Uns</a><br>
         <a href="rechtliches.php">Rechtliches</a><br>
         <a href="login.php">Admin Login</a>
         </div>
