@@ -1,15 +1,9 @@
 <?php
 
 session_start();
-echo var_dump($_SESSION);
-if (isset($_SESSION["is_logged_in"])) {
-    if ($_SESSION["is_logged_in"] === true) {
-        exit;
-    }else {
-        header('location: lol.php');
-    }
-}else {        
-    header('location: gugus.php');
+if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
+    header('location: login.php');
+    die();
 }
 
 if (isset($_POST['signout'])) {
@@ -32,32 +26,6 @@ if (isset($_POST['signout'])) {
     header('Location: login.php');
     exit;
 }
-//Mysql Connection
-$servername = "127.0.0.1:3306";
-$dbusername = "rundb";
-$dbpassword = "runpass";
-
-$conn = new PDO("mysql:host=$servername;dbname=books", $dbusername, $dbpassword);
-
-//user authentication
-if (isset($_POST['signin'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $query = "SELECT * from admin WHERE username = :username AND password = :password";
-    $stmt = $conn->prepare($query);
-    $stmt->execute(['username' => $username, 'password' => $password]);
-
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user) {
-        $_SESSION['name'] = $user['username'];
-        $_SESSION['username'] = $user['username'];
-        header('location: adminsite.php');
-    } else {
-        header('location: login.php');
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,11 +36,9 @@ if (isset($_POST['signin'])) {
     <title>Document</title>
 </head>
 <body>
-<div class="container col-12 border rounded mt-3">
-  <h1 class=" mt-3 text-center">Welcome, This your dashboard!! </h1>
-  <form method="post">
+    <form method="post">
     <button type="submit" name='signout' > Sign Out</button>
-  </form>
+    </form>
 </div>
 </body>
 </html>
