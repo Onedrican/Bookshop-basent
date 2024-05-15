@@ -28,7 +28,7 @@
 
 <?php
 session_start();
-
+echo var_dump($_SESSION);
 $servername = "127.0.0.1:3306";
 $dbusername = "rundb";
 $dbpassword = "runpass";
@@ -49,6 +49,7 @@ if (isset($_POST['signin'])) {
     if ($user) {
         $_SESSION['name'] = $user['username'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION["is_logged_in"] = true;
         header('location: adminsite.php');
     } else {
         header('location: login.php');

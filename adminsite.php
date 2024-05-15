@@ -1,5 +1,16 @@
 <?php
+
 session_start();
+echo var_dump($_SESSION);
+if (isset($_SESSION["is_logged_in"])) {
+    if ($_SESSION["is_logged_in"] === true) {
+        exit;
+    }else {
+        header('location: lol.php');
+    }
+}else {        
+    header('location: gugus.php');
+}
 
 if (isset($_POST['signout'])) {
     //Reset Session variabel
@@ -13,6 +24,8 @@ if (isset($_POST['signout'])) {
             $params["secure"], $params["httponly"]
         );
     }
+
+    $_Session= array();
     session_destroy();
 
     // Redirect to login 
