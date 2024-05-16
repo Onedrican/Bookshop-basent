@@ -92,6 +92,12 @@ header {
     color: white;
 }
 
+.bookwahl{
+    color: red;
+}
+.booksh{
+    background-color: red 
+}
 .dropdown-content {
     display: none;
     position: relative;
@@ -110,8 +116,13 @@ header {
 .dropdown:hover .dropdown-content {    
     display: block;
 }
-
-.dropdown :hover{
+.bookwahl:hover .dropdown-content {    
+    display: block;
+}
+.bookwahl:hover{
+    background-color: rgb(23, 22, 22);
+}
+.dropdown:hover{
     background-color: rgb(23, 22, 22);
 }
 

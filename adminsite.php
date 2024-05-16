@@ -37,6 +37,16 @@ if (isset($_POST['signout'])) {
     <title>Document</title>
 </head>
 <body>
+<div class="bookwahl">
+        <div  class= booksh>Bücher</div> 
+        <div class="dropdown1">
+        <div class="dropdown-content">
+        <a href="Book_delete.php">Bücher löschen</a> <br>
+        <a href="Book_change.php">Bücher ändern</a> <br>
+        <a href="Book_add.php">Bücher hinzufügen</a> <br>
+        </div>  
+        </div>
+    </div>
 <h1>Book shit</h1>
 <a href="Book_delete.php">Bücher löschen</a> <br>
 <a href="Book_change.php">Bücher ändern</a> <br>
