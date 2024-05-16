@@ -19,8 +19,8 @@ if (isset($_POST['signout'])) {
         );
     }
 
-    $_Session= array();
-    session_destroy();
+    // $_Session= array();
+    // session_destroy();
 
     // Redirect to login 
     header('Location: login.php');
