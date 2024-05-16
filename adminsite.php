@@ -37,9 +37,21 @@ if (isset($_POST['signout'])) {
     <title>Document</title>
 </head>
 <body>
+<h1>Book shit</h1>
+<a href="Book_delete.php">Bücher löschen</a> <br>
+<a href="Book_change.php">Bücher ändern</a> <br>
+<a href="Book_add.php">Bücher hinzufügen</a> <br>
+<br>
+<h1>User shit</h1>
+<a href="User_search.php">User suchen</a> <br>
+<a href="User_delete.php">User löschen</a> <br>
+<a href="User_change.php">User ändern</a> <br>
+<a href="User_new.php">Neuer User</a> <br>
+
+
     <form method="post">
     <button type="submit" name='signout' > Sign Out</button>
     </form>
-</div>
+
 </body>
 </html>

@@ -9,19 +9,7 @@
 <body>
   <header>
     <span id = "name">Bookshop BASENT</span>
-    <div class="dropdown">
-        <div  class="burger"><p></p></div>
-        <div  class="burger"></div>
-        <div  class="burger"></div> 
-        <div class="dropdown1">
-        <div class="dropdown-content">
-        <a href="index.php">Home</a><br>
-        <a href="Ueber_uns.php">Über Uns</a><br>
-        <a href="rechtliches.php">Rechtliches</a><br>
-        <a href="login.php">Admin Login</a>
-        </div>  
-        </div>
-    </div>
+
   </header>
 <br>
 <br>
@@ -168,5 +156,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 echo "</div>";
 ?>
+  <script>
+      console.log("Hey you found the ester egg here take this cookie :) ")
+
+  </script>
 </body>
 </html>
