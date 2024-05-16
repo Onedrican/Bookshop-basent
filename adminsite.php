@@ -40,13 +40,24 @@ if (isset($_POST['signout'])) {
 <div class="bookwahl">
         <div  class= booksh>Bücher</div> 
         <div class="dropdown1">
-        <div class="dropdown-content">
+        <div class="bookwahl-content">
         <a href="Book_delete.php">Bücher löschen</a> <br>
         <a href="Book_change.php">Bücher ändern</a> <br>
         <a href="Book_add.php">Bücher hinzufügen</a> <br>
         </div>  
         </div>
-    </div>
+</div>
+<div class="userwahl">
+        <div  class= booksh>user</div> 
+        <div class="dropdown1">
+        <div class="userwahl-content">
+        <a href="User_search.php">User suchen</a> <br>
+        <a href="User_delete.php">User löschen</a> <br>
+        <a href="User_change.php">User ändern</a> <br>
+        <a href="User_new.php">Neuer User</a> <br>
+        </div>  
+        </div>
+</div>
 <h1>Book shit</h1>
 <a href="Book_delete.php">Bücher löschen</a> <br>
 <a href="Book_change.php">Bücher ändern</a> <br>
