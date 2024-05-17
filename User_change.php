@@ -1,4 +1,5 @@
 <?php
+include ("includesite.php");
 if (isset($_POST['signout'])) {
     //Reset Session variabel
     $_SESSION = array();

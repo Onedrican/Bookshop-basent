@@ -27,6 +27,7 @@
 </div>
 
 <?php
+include ("includesite.php");
 session_start();
 echo var_dump($_SESSION);
 $servername = "127.0.0.1:3306";

@@ -1,5 +1,5 @@
 <?php
-
+include ("includesite.php");
 //Connection to the database
 
 $servername = "127.0.0.1:3306";

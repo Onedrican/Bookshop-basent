@@ -1,7 +1,7 @@
 <?php
 
 //Connection to the database
-
+include ("includesite.php");
 $servername = "127.0.0.1:3306";
 $username = "rundb";
 $password = "runpass";
