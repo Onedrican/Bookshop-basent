@@ -1,13 +1,5 @@
 <?php
 
-//Connection to the database
-
-$servername = "127.0.0.1:3306";
-$username = "rundb";
-$password = "runpass";
-$conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 if (isset($_POST['signout'])) {
     //Reset Session variabel
     $_SESSION = array();
@@ -39,6 +31,10 @@ if (isset($_POST['signout'])) {
     <title>Document</title>
 </head>
 <body>
+<form method="post">
+    <input type="text" name="search" placeholder="Suchen">
+    <input type="submit" value="Submit">
+</form>
 <form method="post">
     <button type="submit" name='signout' > Sign Out</button>
 </form>

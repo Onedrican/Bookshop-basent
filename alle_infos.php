@@ -38,6 +38,7 @@ echo "<p>Kategorie: " . $book['kategorie'] . "</p>";
 echo "<p>Zustand: " . $book['zustand'] . "</p>";
 echo "</span>";
 
+
 ?>
 </body>
 </html>

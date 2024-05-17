@@ -169,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 echo "</div>";
 ?>
   <script>
-      console.log("Hey you found the ester egg here take this cookie :) ")
+      console.log("Hey you found the ester egg here take this cookie :3 ")
 
   </script>
 </body>
