@@ -30,12 +30,13 @@
 include ("includesite.php");
 session_start();
 echo var_dump($_SESSION);
+
+//Connection to the database
 $servername = "127.0.0.1:3306";
-$dbusername = "rundb";
-$dbpassword = "runpass";
-
-
-$conn = new PDO("mysql:host=$servername;dbname=books", $dbusername, $dbpassword);
+$username = "rundb";
+$password = "runpass";
+$conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_POST['signin'])) {
     $username = htmlspecialchars(trim($_POST['username']));;

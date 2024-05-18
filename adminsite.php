@@ -5,6 +5,7 @@ if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
     header('location: login.php');
     die();
 }
+echo var_dump($_SESSION);
 
 if (isset($_POST['signout'])) {
     //Reset Session variabel

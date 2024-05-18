@@ -1,6 +1,12 @@
 <?php
 include ("includesite.php");
-if (isset($_POST['signout'])) {
+
+if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
+    header('location: login.php');
+    die();
+}
+
+if (isset($_GET['signout'])) {
     //Reset Session variabel
     $_SESSION = array();
 
@@ -35,7 +41,7 @@ if (isset($_POST['signout'])) {
     <input type="text" name="search" placeholder="Suchen">
     <input type="submit" value="Submit">
 </form>
-<form method="post">
+<form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>
 </body>

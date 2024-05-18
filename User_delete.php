@@ -1,7 +1,12 @@
 <?php
 include ("includesite.php");
-//Connection to the database
 
+if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
+    header('location: login.php');
+    die();
+}
+
+//Connection to the database
 $servername = "127.0.0.1:3306";
 $username = "rundb";
 $password = "runpass";
@@ -19,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $search = htmlspecialchars(trim($_POST['search']));
         $filter = $_POST['filter'];
 
-        // Validate the inputs
+        // Validate the input
         if (strlen($search) < 1 || strlen($search) > 50) {
             echo "Invalid input. Please enter a string with a length between 1 and 50.";
             return;
@@ -79,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-if (isset($_POST['signout'])) {
+if (isset($_GET['signout'])) {
     //Reset Session variabel
     $_SESSION = array();
 
@@ -112,8 +117,7 @@ if (isset($_POST['signout'])) {
 <body>
 
 <form method="post">
-    <input type="text" name="search" placeholder="Suchen" maxlength="50">
-
+    <input type="text" name="search" placeholder="Suchen" minlength="1" maxlength="50">
     <select name="filter">
         <option value="">Filtern</option>
         <option value="ID">Id</option>
@@ -125,7 +129,7 @@ if (isset($_POST['signout'])) {
     <input type="submit" value="Submit">
 </form>
 
-<form method="post">
+<form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>
 </body>

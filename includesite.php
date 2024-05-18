@@ -16,6 +16,9 @@
 <a href="User_delete.php">User löschen</a> <br>
 <a href="User_change.php">User ändern</a> <br>
 <a href="User_new.php">Neuer User</a> <br>
-
+<h1>Kunde shit</h1>
+<a href="Kunde_add.php">Kunde add</a> <br>
+<a href="Kunde_change.php">Kunde change</a> <br>
+<a href="Kunde_delete.php">Kunde delete</a> <br>
 </body>
 </html>

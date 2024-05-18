@@ -1,7 +1,12 @@
 <?php
 include ("includesite.php");
-//Connection to the database
 
+if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
+    header('location: login.php');
+    die();
+}
+
+//Connection to the database
 $servername = "127.0.0.1:3306";
 $username = "rundb";
 $password = "runpass";
@@ -73,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-if (isset($_POST['signout'])) {
+if (isset($_GET['signout'])) {
     //Reset Session variabel
     $_SESSION = array();
 
@@ -107,17 +112,17 @@ if (isset($_POST['signout'])) {
 <div>
 <form method="post">
     <input type="number" name="Katalog_add" placeholder="Katalog" min="10" max="19" required><br>
-    <input type="text" name="Kurztitle_add" placeholder="Kurztitle" maxlength="100" required><br>
+    <input type="text" name="Kurztitle_add" placeholder="Kurztitle" minlength="1" maxlength="100" required><br>
     <input type="number" name="Kategorie_add" placeholder="Kategorie 1-14" min="1" max="14" required><br>
-    <input type="text" name="Autor_add" placeholder="Autor" required maxlength="50"><br>
-    <input type="text" name="Title_add" placeholder="Title" required maxlength="50"><br>
+    <input type="text" name="Autor_add" placeholder="Autor" required minlength="1" maxlength="50"><br>
+    <input type="text" name="Title_add" placeholder="Title" required minlength="1" maxlength="50"><br>
     <input type="text" name="Zustand_add" placeholder="Zustand M/S/G" pattern="[MSG]" required><br>
     <input type="number" name="Verfasser_add" placeholder="Verfasser 1-6" min="1" max="6" required><br>
 
     <input type="submit" value="Submit">
 </form>
 </div>
-<form method="post">
+<form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>
 </body>

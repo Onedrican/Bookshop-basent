@@ -1,48 +1,84 @@
 <?php
 include ("includesite.php");
-include ("Include/Dbconnection.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['delete'])) {
-        $search = htmlspecialchars(trim($_POST['search']));
-        $filter = $_POST['filter'];
-
-        //Preparing beginning of querry
-        $search = $search .= "%";
-        $query = "SELECT * FROM benutzer WHERE";
-
-        // Determine the filter
-        switch ($filter) {
-            case 'ID':
-                $query .= "ID LIKE :search";
-                break;
-            case 'Username':
-                $query .= "benutzername LIKE :search";
-                break;
-            case 'Name':
-                $query .= "name LIKE :search";
-                break;
-            case 'Vorname':
-                $query .= "vorname LIKE :search";
-                break;
-            case 'Email':
-                $query .= "email LIKE :search";
-            default:
-                $query .= "name LIKE :search";
-                break;
-        }
-
-        $stmt = $conn->prepare($query);
-        $stmt->bindValue(':search', $search, PDO::PARAM_STR);
-        $stmt->execute();
-
-        //Fetch the results
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
+if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
+    header('location: login.php');
+    die();
 }
 
-if (isset($_POST['signout'])) {
+//Connection to the database
+$servername = "127.0.0.1:3306";
+$username = "rundb";
+$password = "runpass";
+$conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $search = htmlspecialchars(trim($_POST['search']));
+    $filter = $_POST['filter'];
+
+    // Validate the input
+    if (strlen($search) < 1 || strlen($search) > 50) {
+        echo "Invalid input. Please enter a string with a length between 1 and 50.";
+        return;
+    }
+
+    //Preparing beginning of querry
+    $search = $search .= "%";
+    $query = "SELECT * FROM benutzer WHERE ";
+
+    // Determine the filter
+    switch ($filter) {
+        case 'ID':
+            $query .= "ID LIKE :search";
+            break;
+        case 'Username':
+            $query .= "benutzername LIKE :search";
+            break;
+        case 'Name':
+            $query .= "name LIKE :search";
+            break;
+        case 'Vorname':
+            $query .= "vorname LIKE :search";
+            break;
+        case 'Email':
+            $query .= "email LIKE :search";
+        default:
+            $query .= "name LIKE :search";
+            break;
+    }
+
+    // Execute the query
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':search', $search, PDO::PARAM_STR);
+    $stmt->execute();
+
+    //Fetch the results
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //Display the results
+    echo "<div>";
+    if (count($results) > 0) {
+        foreach ($results as $user) {
+            echo '<div class="result_box">';
+            echo '<span class="user"><img class="bild1" src=pictures/user_icon.jpg alt="User_Icon"></span>';
+            echo "<p>Username: " . $user['benutzername'] . "</p>";
+            echo "<p>Name: " . $user['name'] . "</p>";
+            echo "<p>Vorname: " . $user['vorname'] . "</p>";
+            echo "<p>Email: " . $user['email'] . "</p>";
+            echo "</div>";
+        }
+    } else {
+        echo '<div id= "noresults">';
+        echo "No results found :(";
+        echo '</div>';
+    }
+    echo "</div>";
+
+
+}
+
+if (isset($_GET['signout'])) {
     //Reset Session variabel
     $_SESSION = array();
 
@@ -88,7 +124,7 @@ if (isset($_POST['signout'])) {
     <input type="submit" value="Submit">
 </form>
 
-<form method="post">
+<form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>
 </body>

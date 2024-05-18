@@ -1,6 +1,10 @@
 <?php
-
 include ("includesite.php");
+
+if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
+    header('location: login.php');
+    die();
+}
 
 //error_reporting(E_ERROR | E_PARSE);
 //Connection to the database
@@ -27,15 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo "<div>";
-if (count($results) > 0) {
-    foreach ($results as $book) {
-        echo '<div class="result_box">';
-        echo '<span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span>';
-        $kurztitle = substr($book['kurztitle'], 0, 20); // Limit the output to the first 20 characters
-        echo "<h2>" . $kurztitle . "</h2>";
-        echo "<p>Author: " . $book['autor'] . "</p>";
-        echo "<form action='alle_infos.php' method='GET'>
+    echo "<div>";
+    if (count($results) > 0) {
+        foreach ($results as $book) {
+            echo '<div class="result_box">';
+            echo '<span class="book1"><img class="bild1" src=pictures/book.webp alt="bookcover"></span>';
+            $kurztitle = substr($book['kurztitle'], 0, 20); // Limit the output to the first 20 characters
+            echo "<h2>" . $kurztitle . "</h2>";
+            echo "<p>Author: " . $book['autor'] . "</p>";
+            echo "<form action='alle_infos.php' method='GET'>
             <button type='submit'
                     name='id'
                     value='" . $book['id'] . "'
@@ -44,17 +48,17 @@ if (count($results) > 0) {
                     Details
             </button>
           </form>";
-        echo "</div>";
-    }
-} else {
+            echo "</div>";
+        }
+    } else {
         echo '<div id= "noresults">';
         echo "No results found :(";
         echo '</div>';
+    }
 }
 
 
-
-    if (isset($_POST['signout'])) {
+    if (isset($_GET['signout'])) {
         //Reset Session variabel
         $_SESSION = array();
 
@@ -74,7 +78,7 @@ if (count($results) > 0) {
         header('Location: login.php');
         exit;
     }
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +94,7 @@ if (count($results) > 0) {
     <input type="text" name="search" placeholder="Suchen">
     <input type="submit" value="Submit">
 </form>
-<form method="post">
+<form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>
 </body>
