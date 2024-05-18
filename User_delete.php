@@ -19,6 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $search = htmlspecialchars(trim($_POST['search']));
         $filter = $_POST['filter'];
 
+        // Validate the inputs
+        if (strlen($search) < 1 || strlen($search) > 50) {
+            echo "Invalid input. Please enter a string with a length between 1 and 50.";
+            return;
+        }
+
         //Preparing beginning of querry
         $search = $search .= "%";
         $query = "SELECT * FROM benutzer WHERE ";
@@ -106,7 +112,7 @@ if (isset($_POST['signout'])) {
 <body>
 
 <form method="post">
-    <input type="text" name="search" placeholder="Suchen">
+    <input type="text" name="search" placeholder="Suchen" maxlength="50">
 
     <select name="filter">
         <option value="">Filtern</option>

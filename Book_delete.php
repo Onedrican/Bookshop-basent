@@ -19,6 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $search = htmlspecialchars(trim($_POST['search']));
         $search .= "%";
         $query = "SELECT * FROM buecher WHERE kurztitle LIKE :search ORDER BY kurztitle ASC" ;
+
+        // Validate the input
+        if (strlen($search) < 1 || strlen($search) > 50) {
+            echo "Invalid input. Please enter a string with a length between 1 and 50.";
+            return;
+        }
+
         $stmt = $conn->prepare($query);
         $stmt->bindValue(':search', $search, PDO::PARAM_STR);
         $stmt->execute();
@@ -80,7 +87,7 @@ if (isset($_GET['signout'])) {
 </head>
 <body>
 <form method="post">
-    <input type="text" name="search" placeholder="Suchen">
+    <input type="text" name="search" placeholder="Suchen" maxlength="50">
     <input type="submit" value="Submit">
 </form>
 <br>
