@@ -11,8 +11,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $geburtstag = $_POST['Geburtstag'];
     $vorname = htmlspecialchars(trim($_POST['Vorname_add']));
     $name = htmlspecialchars(trim($_POST['Name_add']));
+    $email = htmlspecialchars(trim($_POST['Email_add']));
+    $kontakt = $_POST['Kontakt'];
     $geschlecht = $_POST['Geschlecht_add'];
     $mitgliedSeit = $_POST['MitgliedSeit'];
+
+
+    /* Da in ihrer Datenbank die Spalte "kid" nicht autoincrement ist
+     muss ich die höchste kid auslesen und um 1 erhöhen damit man eine anständige kid hat */
+
+    //Create querry for kid
+    $querykid = "SELECT MAX(kid) as maxKid FROM kunden";
+
+    // Prepare and execute the statement
+    $stmt = $conn->prepare($querykid);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Get the highest kid and add 1
+    $kid = $result['maxKid'] + 1;
 
     // Validate the inputs
     if (strlen($vorname) < 2 || strlen($vorname) > 45) {
@@ -23,16 +42,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Invalid input. Please enter a string with a length between 2 and 45.";
         return;
     }
+    if (strlen($email) < 5 || strlen($email) > 45) {
+        echo "Invalid input. Please enter a string with a length between 2 and 45.";
+        return;
+    }
 
-    $query = "INSERT INTO kunden (geburtstag, vorname, name, geschlecht, kunde_seit) VALUES (:geburtsdatum, :vorname, :name, :geschlecht, :mitgliedSeit)";
+
+    $query = "INSERT INTO kunden (kid ,geburtstag, vorname, name, email, kontaktpermail, geschlecht, kunde_seit) VALUES (:kid, :geburtsdatum, :vorname, :name, :email, :kontakt, :geschlecht, :mitgliedSeit)";
 
     // Prepare the statement
     $stmt = $conn->prepare($query);
 
     // Bind the parameters
+    $stmt->bindParam(':kid', $kid);
     $stmt->bindParam(':geburtsdatum', $geburtstag);
     $stmt->bindParam(':vorname', $vorname);
     $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':kontakt', $kontakt);
     $stmt->bindParam(':geschlecht', $geschlecht);
     $stmt->bindParam(':mitgliedSeit', $mitgliedSeit);
 
@@ -81,8 +108,17 @@ if (isset($_GET['signout'])) {
         <input type="date" id="Geb" name="Geburtstag" required>
         <input type="text" name="Vorname_add" placeholder="Vorname" minlength="2" maxlength="45" required><br>
         <input type="text" name="Name_add" placeholder="Nachname" minlength="2" maxlength="45" required><br>
+
+        <input type="text" name="Email_add" placeholder="E-Mail" minlength="5" maxlength="45" required><br>
+
+        <label for="Kontakt">Kontakt per Email erwünscht?</label>
+        <input type="radio"id="1" name="Kontakt" value="1" required><br>
+        <label for="1">Ja</label><br>
+        <input type="radio" id="0" name="Kontakt" value="0" required>
+        <label for="0">Nein</label><br>
+
         <label for="Geschlecht">Geschlecht</label>
-        <select id="Geschlecht" name="Geschlecht_add" size="3" required>
+        <select id="Geschlecht" name="Geschlecht_add" size="2" required>
             <option value="M">Man</option>
             <option value="W">Frau</option>
         </select>

@@ -113,7 +113,7 @@ if (isset($_GET['signout'])) {
 <body>
 
 <form method="post">
-    <input type="text" name="search" placeholder="Suchen" minlength="1" maxlength="50">
+    <input type="text" name="search" placeholder="Suchen" minlength="1" maxlength="50" required>
     <select name="filter">
         <option value="">Filtern</option>
         <option value="ID">Id</option>
