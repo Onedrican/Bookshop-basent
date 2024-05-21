@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $vorname = htmlspecialchars(trim($_POST['Vorname_add']));
     $password = htmlspecialchars(trim($_POST['Password_add']));
     $email = htmlspecialchars(trim($_POST['Email_add']));
-    $admin = $_POST['Admin_add'];
+    $admin = $_POST['admin'];
 
     // Validate the inputs
     if (strlen($benutzername) < 5 || strlen($benutzername) > 45) {
@@ -43,19 +43,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     //Prepare the SQL query
-    $query = "INSERT INTO benutzer (benutzername, name, vorname, passwort, email, admin, verfasser) VALUES (:katalog, :kurztitle, :kategorie, :autor, :title, :zustand, :verfasser)";
+    $query = "INSERT INTO benutzer (benutzername, name, vorname, passwort, email, admin, verfasser) VALUES (:benutzername, :name, :vorname, :password, :email, :admin)";
 
     // Prepare the statement
     $stmt = $conn->prepare($query);
 
     // Bind the parameters
-    $stmt->bindParam(':katalog', $katalog);
-    $stmt->bindParam(':kurztitle', $kurztitle);
-    $stmt->bindParam(':kategorie', $kategorie);
-    $stmt->bindParam(':autor', $autor);
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':zustand', $zustand);
-    $stmt->bindParam(':verfasser', $verfasser);
+    $stmt->bindParam(':benutzername', $benutzername);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':vorname', $vorname);
+    $stmt->bindParam(':password', $hash);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':admin', $admin);
 
     // Execute the query
     $stmt->execute();
@@ -98,8 +97,11 @@ if (isset($_GET['signout'])) {
     <input type="text" name="Vorname_add" placeholder="Vorname" minlength="1" maxlength="45" required><br>
     <input type="password" name="Password_add" placeholder="Password min.8" required minlength="8" maxlength="50"><br>
     <input type="text" name="Email_add" placeholder="Email" required minlength="5" maxlength="50"><br>
-    <label for="Admin">Admin?</label><input type="checkbox" name="Admin"><br>
-
+    <label for="Admin">Admin?</label>
+    <input type="radio"id="admin1" name="admin" value="1" required><br>
+    <label for="admin1">Ja</label><br>
+    <input type="radio" id="admin0" name="admin" value="0" required>
+    <label for="admin0">Nein</label><br>
     <input type="submit" value="Submit">
 </form>
 </div>
