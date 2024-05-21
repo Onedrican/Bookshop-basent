@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $kurztitle = substr($book['kurztitle'], 0, 20); // Limit the output to the first 20 characters
                 echo "<h2>" . $kurztitle . "</h2>";
                 echo "<p>Author: " . $book['autor'] . "</p>";
-                echo '<form method="POST"><button type="submit" name="delete" value="' . $book['id'] . '" onclick="return confirm(\'Are you sure you want to delete this book?\')">Delete</button></form>';
+                echo '<form method="POST"><button type="submit" name="delete" value="' . $book['id'] . '" onclick="return confirm(\'Möchten Sie dieses Buch wirklich löschen?\')">Delete</button></form>';
                 echo "</div>";
             }
         } else {

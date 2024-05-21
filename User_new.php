@@ -23,16 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Invalid input. Please enter a string with a length between 5 and 45.";
         return;
     }
-    if (strlen($name) < 5 || strlen($name) > 45) {
-        echo "Invalid input. Please enter a string with a length between 5 and 45.";
+    if (strlen($name) < 2 || strlen($name) > 45) {
+        echo "Invalid input. Please enter a string with a length between 2 and 45.";
         return;
     }
-    if (strlen($vorname) < 5 || strlen($vorname) > 45) {
-        echo "Invalid input. Please enter a string with a length between 5 and 45.";
+    if (strlen($vorname) < 2 || strlen($vorname) > 45) {
+        echo "Invalid input. Please enter a string with a length between 2 and 45.";
         return;
     }
-    if (strlen($password) < 5 || strlen($password) > 50) {
-        echo "Invalid input. Please enter a string with a length of at least 8. ";
+    if (strlen($password) < 8 || strlen($password) > 50) {
+        echo "Invalid input. Please enter a string with a length of at least 8 and a maximum of 50.";
         return;
     }
     if (strlen($email) < 5 || strlen($email) > 45) {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     //Prepare the SQL query
-    $query = "INSERT INTO benutzer (benutzername, name, vorname, passwort, email, admin, verfasser) VALUES (:benutzername, :name, :vorname, :password, :email, :admin)";
+    $query = "INSERT INTO benutzer (benutzername, name, vorname, passwort, email, admin ) VALUES (:benutzername, :name, :vorname, :password, :email, :admin)";
 
     // Prepare the statement
     $stmt = $conn->prepare($query);
@@ -91,12 +91,13 @@ if (isset($_GET['signout'])) {
 </head>
 <body>
 
+<div>
 <form method="post">
     <input type="text" name="Benutzername_add" placeholder="Benutzername" minlength="5" maxlength="45" required><br>
-    <input type="text" name="Name_add" placeholder="Name" minlength="1" maxlength="45" required><br>
-    <input type="text" name="Vorname_add" placeholder="Vorname" minlength="1" maxlength="45" required><br>
+    <input type="text" name="Name_add" placeholder="Name" minlength="2" maxlength="45" required><br>
+    <input type="text" name="Vorname_add" placeholder="Vorname" minlength="2" maxlength="45" required><br>
     <input type="password" name="Password_add" placeholder="Password min.8" required minlength="8" maxlength="50"><br>
-    <input type="text" name="Email_add" placeholder="Email" required minlength="5" maxlength="50"><br>
+    <input type="text" name="Email_add" placeholder="Email" required minlength="5" maxlength="45"><br>
     <label for="Admin">Admin?</label>
     <input type="radio"id="admin1" name="admin" value="1" required><br>
     <label for="admin1">Ja</label><br>
@@ -105,7 +106,6 @@ if (isset($_GET['signout'])) {
     <input type="submit" value="Submit">
 </form>
 </div>
-
 <form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>

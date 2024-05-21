@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<p>Name: " . $user['name'] . "</p>";
                 echo "<p>Vorname: " . $user['vorname'] . "</p>";
                 echo "<p>Email: " . $user['email'] . "</p>";
-                echo '<form method="POST"><button type="submit" name="delete" value="' . $user['ID'] . '" onclick="return confirm(\'Are you sure you want to delete this book?\')">Delete</button></form>';
+                echo '<form method="POST"><button type="submit" name="delete" value="' . $user['ID'] . '" onclick="return confirm(\'Möchten sie dieses Buch wirklich löschen?\')">Delete</button></form>';
                 echo "</div>";
             }
         } else {

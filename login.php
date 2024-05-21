@@ -24,6 +24,7 @@
       <input type="submit" name="signin" value="Sign In">
     </div>
   </form>
+    <a href="Pw_vergessen.php">Passwort vergessen?</a>
 </div>
 
 <?php
