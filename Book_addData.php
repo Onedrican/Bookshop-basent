@@ -1,7 +1,11 @@
 <?php
 include ("includesite.php");
 
-
+session_start();
+if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
+    header('location: login.php');
+    die();
+}
 
 if (isset($_GET['signout'])) {
     //Reset Session variabel
