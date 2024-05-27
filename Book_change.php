@@ -39,13 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $kurztitle = substr($book['kurztitle'], 0, 20); // Limit the output to the first 20 characters
             echo "<h2>" . $kurztitle . "</h2>";
             echo "<p>Author: " . $book['autor'] . "</p>";
-            echo "<form action='alle_infos.php' method='GET'>
+            echo "<form action='book_edit.php' method='GET'>
             <button type='submit'
                     name='id'
                     value='" . $book['id'] . "'
-                    data-title='" . $book['kurztitle'] . "'
-                    data-author='" . $book['autor'] . "'>
-                    Details
+                    Edit>
+                    Buch ändern
             </button>
           </form>";
             echo "</div>";
@@ -94,6 +93,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text" name="search" placeholder="Suchen">
     <input type="submit" value="Submit">
 </form>
+
+
+
 <form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>
