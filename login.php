@@ -40,18 +40,29 @@ $conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_POST['signin'])) {
-    $username = htmlspecialchars(trim($_POST['username']));;
-    $password = htmlspecialchars(trim($_POST['password']));;
+    $username = htmlspecialchars(trim($_POST['username']));
+    $password = htmlspecialchars(trim($_POST['password']));
 
-    $query = "SELECT * from admin WHERE username = :username AND password = :password";
+    // Fetch the user from the database
+    $query = "SELECT * from benutzer WHERE benutzername = :username";
     $stmt = $conn->prepare($query);
-    $stmt->execute(['username' => $username, 'password' => $password]);
+    $stmt->execute(['username' => $username]);
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        $_SESSION['name'] = $user['username'];
-        $_SESSION['username'] = $user['username'];
+        // Verify the password
+        if (password_verify($password, $user['passwort'])) {
+            $_SESSION["is_logged_in"] = true;
+            header('location: adminsite.php');
+        } else {
+            echo "Invalid password.";
+        }
+    } else {
+        echo "User not found.";
+    }
+
+    if ($user) {
         $_SESSION["is_logged_in"] = true;
         header('location: adminsite.php');
     } else {
