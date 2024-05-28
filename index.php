@@ -54,7 +54,7 @@
 
 
 <?php
-include ("includesite.php");
+//include ("includesite.php");
 //error_reporting(E_ERROR | E_PARSE);
 
 //Connection to the database

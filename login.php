@@ -43,7 +43,7 @@
 </div>
 
 <?php
-include ("includesite.php");
+//include ("includesite.php");
 session_start();
 
 //Connection to the database

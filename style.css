@@ -40,7 +40,7 @@ header {
 .frontpage_books {
     width: 21%;
     float: left;
-    height: 450px;
+    height: 500px;
     text-align: center;
     margin: 2%;
 }
@@ -48,7 +48,7 @@ header {
 .result_box {
     width: 21%;
     float: left;
-    height: 450px;
+    height: 500px;
     text-align: center;
     margin: 2%;
 }
@@ -198,4 +198,13 @@ input[type="submit"] {
 }
 #botd{
     padding: 1%;
+}
+input[type="password"],
+select {
+    padding: 5px;
+    font-size: 25px;
+    background-color: rgb(23, 22, 22);
+    color: white;
+    border: none;
+    font-family: Vesper Libre, serif;
 }
