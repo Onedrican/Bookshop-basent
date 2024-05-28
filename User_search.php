@@ -109,7 +109,23 @@ if (isset($_GET['signout'])) {
     <title>Document</title>
 </head>
 <body>
-
+    <header>
+        <span id = "name">Bookshop BASENT</span>
+        <div class="dropdown">
+            <div  class="burger"><p></p></div>
+            <div  class="burger"></div>
+            <div  class="burger"></div> 
+            <div class="dropdown1">
+            <div class="dropdown-content">
+            <a href="index.php">Home</a><br>
+            <a href="Ueber_uns.php">Über Uns</a><br>
+            <a href="rechtliches.php">Rechtliches</a><br>
+            <a href="login.php">Admin Login</a>
+            </div>  
+            </div>
+        </div>
+    </header>
+    <br>
 <form method="post">
     <input type="text" name="search" placeholder="Suchen" maxlength="50" required>
 
