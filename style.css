@@ -105,8 +105,7 @@ header {
     width: 15%;
     vertical-align: top;
     display: inline-block;
-    padding-top: 1.5%;
-    line-height: 1.2;
+    
 }
 .userwahl{
     padding-left: 2%;
@@ -114,8 +113,7 @@ header {
     width: 15%;
     vertical-align: top;
     display: inline-block;
-    padding-top: 1.5%;
-    font-family: Vesper Libre, serif;
+    
 }
 .dropdown-content {
     display: none;
