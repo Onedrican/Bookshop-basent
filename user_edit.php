@@ -76,8 +76,6 @@ if (isset($_GET['signout'])) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-
-
         if ($user) {
             echo "<form method='post'>
     <input type='hidden' name='user_id' value='" . $user['ID'] . "'>

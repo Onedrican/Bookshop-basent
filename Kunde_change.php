@@ -56,6 +56,77 @@
     $conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $search = htmlspecialchars(trim($_POST['search']));
+        $filter = $_POST['filter'];
+
+        // Validate the input
+        if (strlen($search) < 1 || strlen($search) > 50) {
+            echo "Invalid input. Please enter a string with a length between 1 and 50.";
+            return;
+        }
+
+        //Preparing beginning of querry
+        $search = $search .= "%";
+        $query = "SELECT * FROM kunden WHERE ";
+
+        // Determine the filter
+        switch ($filter) {
+            case 'vorname':
+                $query .= "vorname LIKE :search";
+                break;
+            case 'name':
+                $query .= "name LIKE :search";
+                break;
+            case 'email':
+                $query .= "email LIKE :search";
+                break;
+            default:
+                $query .= "name LIKE :search";
+                break;
+        }
+        // Execute the query
+        $stmt = $conn->prepare($query);
+        $stmt->bindValue(':search', $search, PDO::PARAM_STR);
+        $stmt->execute();
+        //Fetch the results
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($results as $index => $kunde) {
+            $results[$index]['kontaktpermail'] = $kunde['kontaktpermail'] == 1 ? 'Ja' : 'Nein';
+        }
+
+        //Display the results
+        echo "<div>";
+        if (count($results) > 0) {
+            foreach ($results as $kunde) {
+                echo '<div class="result_box">';
+                echo '<span class="user"><img class="bild1" src=pictures/kunde_icon.webp alt="Kunde_Icon"></span>';
+                echo "<p>Kunden Id: " . $kunde['kid'] . "</p>";
+                echo "<p>Vorname: " . $kunde['vorname'] . "</p>";
+                echo "<p>Name: " . $kunde['name'] . "</p>";
+                echo "<p>Geschlecht: " . $kunde['geschlecht'] . "</p>";
+                echo "<p>Email: " . $kunde['email'] . "</p>";
+                echo "<p>Kunde seit: " . $kunde['kunde_seit'] . "</p>";
+                echo "<p>Geburtstag: " . $kunde['geburtstag'] . "</p>";
+                echo "<p>Konakt per E-Mail erwünscht: " . $kunde['kontaktpermail'] . "</p>";
+                echo "<form action='Kunde_edit.php' method='GET'>
+            <button type='submit'
+                    name='id'
+                    value='" . $kunde['kid'] . "'
+                    Edit>
+                    User ändern
+            </button>
+          </form>";
+                echo "</div>";;
+            }
+        } else {
+            echo '<div id= "noresults">';
+            echo "No results found :(";
+            echo '</div>';
+        }
+        echo "</div>";
+    }
+
         if (isset($_GET['signout'])) {
             //Reset Session variabel
             $_SESSION = array();
