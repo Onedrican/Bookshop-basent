@@ -91,10 +91,31 @@ header {
 .dropdown a {
     color: white;
 }
-
+#titlea{
+    padding-left: 2%;
+    font-size: 34px;
+    width: 15%;
+    vertical-align: top;
+    display: inline-block;
+    
+}
 .bookwahl{
-    color: red;
-    width: 5%
+    padding-left: 2%;
+    font-size: 34px;
+    width: 15%;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 1.5%;
+    line-height: 1.2;
+}
+.userwahl{
+    padding-left: 2%;
+    font-size: 34px;
+    width: 15%;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 1.5%;
+    font-family: Vesper Libre, serif;
 }
 .dropdown-content {
     display: none;
@@ -147,9 +168,6 @@ header {
 .userwahl:hover .userwahl-content {    
     display: block;
 }
-.bookwahl:hover{
-    background-color: rgb(23, 22, 22);
-}
 .dropdown:hover{
     background-color: rgb(23, 22, 22);
 }
@@ -175,6 +193,12 @@ form {
     gap: 10px;
     color: white;
     font-family: Vesper Libre, serif;
+    font-size: 25px;
+}
+form[name="loginpost"]{
+    display: block;
+    justify-content: left;
+    margin-left: 2%;
 }
 
 input[type="text"],
@@ -207,4 +231,8 @@ select {
     color: white;
     border: none;
     font-family: Vesper Libre, serif;
+}
+#title{
+    padding-left: 2%;
+    font-size: 34px;
 }
