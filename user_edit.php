@@ -15,76 +15,34 @@ $conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_POST['book_id'])) {
-    $bookId = htmlspecialchars(trim($_POST['book_id']));
-    $katalog = htmlspecialchars(trim($_POST['katalog']));
-    $nummer = htmlspecialchars(trim($_POST['nummer']));
-    $kurztitle = htmlspecialchars($_POST['kurztitle']);
-    $kategorie = htmlspecialchars(trim($_POST['kategorie']));
-    $verkauft = htmlspecialchars(trim($_POST['verkauft']));
-    $kaufer = htmlspecialchars(trim($_POST['kaufer']));
-    $autor = htmlspecialchars($_POST['autor']);
-    $title = htmlspecialchars($_POST['title']);
-    $sprache = htmlspecialchars(trim($_POST['sprache']));
-    $verfasser = htmlspecialchars(trim($_POST['verfasser']));
-    $zustand = $_POST['zustand'];
+    $userid = htmlspecialchars(trim($_POST['user_id']));
+    $benutzername = htmlspecialchars(trim($_POST['Benutzername_add']));
+    $name = htmlspecialchars(trim($_POST['Name_add']));
+    $vorname = htmlspecialchars(trim($_POST['Vorname_add']));
+    $email = htmlspecialchars(trim($_POST['Email_add']));
+    $admin = $_POST['admin'];
 
     // Validate the inputs
-    if (!is_numeric($katalog) || $katalog < 10 || $katalog > 19) {
-        echo "Invalid Katalog input. Please enter a number between 10 and 19.";
+    if (strlen($benutzername) < 1 || strlen($benutzername) > 50) {
+        echo "Invalid Benutzername input. Please enter a string with a length between 1 and 50.";
+        return;
+    }
+    if (strlen($name) < 1 || strlen($name) > 50) {
+        echo "Invalid Name input. Please enter a string with a length between 1 and 50.";
+        return;
+    }
+    if (strlen($vorname) < 1 || strlen($vorname) > 50) {
+        echo "Invalid Vorname input. Please enter a string with a length between 1 and 50.";
+        return;
+    }
+    if (strlen($email) < 1 || strlen($email) > 100) {
+        echo "Invalid Kurztitle input. Please enter a string with a length between 1 and 100.";
         return;
     }
 
-    if (!is_numeric($nummer) || $nummer < 1 || $nummer > 800) {
-        echo "Invalid Nummer input. Please enter a number between 1 and 800.";
-        return;
-    }
 
-    if (strlen($kurztitle) < 1 || strlen($kurztitle) > 999999999999999999999999) {
-        echo "Invalid Kurztitle input. Please enter a string with a length between 1 and 999999999999999999999999.";
-        return;
-    }
 
-    if (!is_numeric($kategorie) || $kategorie < 1 || $kategorie > 14) {
-        echo "Invalid Kategorie input. Please enter a number between 1 and 14.";
-        return;
-    }
-
-    if (!is_numeric($verkauft) || $verkauft < 0 || $verkauft > 1) {
-        echo "Invalid Verkauft input. Please enter 0(false) or 1(true).";
-        return;
-    }
-
-    if (!is_numeric($kaufer) || $kaufer < 0 || $kaufer > 100000) {
-        echo "Invalid Verkauft input. Please enter a number between 1 or 100'000).";
-        return;
-    }
-
-    if (strlen($autor) < 1 || strlen($autor) > 100) {
-        echo "Invalid Autor input. Please enter a string with a length between 1 and 100.";
-        return;
-    }
-
-    if (strlen($title) < 1 || strlen($title) > 999999999999999999999999) {
-        echo "Invalid Title input. Please enter a string with a length between 1 and 999999999999999999999999.";
-        return;
-    }
-
-    if (strlen($sprache) < 1 || strlen($sprache) > 50) {
-        echo "Invalid Sprache input. Please enter a string with a length between 1 and 50.";
-        return;
-    }
-
-    if (!is_numeric($verfasser) || $verfasser < 1 || $verfasser > 6) {
-        echo "Invalid Verfasser input. Please enter a number between 1 and 6.";
-        return;
-    }
-
-    if (!in_array($zustand, ['M', 'S', 'G'])) {
-        echo "Invalid Zustand input. Please enter either 'M', 'S', or 'G'.";
-        return;
-    }
-
-    $stmt = $conn->prepare("UPDATE buecher SET katalog = :katalog, nummer = :nummer, kurztitle = :kurztitle, kategorie = :kategorie, verkauft = :verkauft, kaufer = :kaufer, autor = :autor, title = :title, sprache = :sprache, verfasser = :verfasser, zustand = :zustand WHERE id = :id");
+    $stmt = $conn->prepare("UPDATE benutzer SET katalog = :katalog, nummer = :nummer, kurztitle = :kurztitle, kategorie = :kategorie, verkauft = :verkauft, kaufer = :kaufer, autor = :autor, title = :title, sprache = :sprache, verfasser = :verfasser, zustand = :zustand WHERE id = :id");
     $stmt->execute(['katalog' => $katalog, 'nummer' => $nummer, 'kurztitle' => $kurztitle, 'kategorie' => $kategorie, 'verkauft' => $verkauft, 'kaufer' => $kaufer, 'autor' => $autor, 'title' => $title, 'sprache' => $sprache, 'verfasser' => $verfasser, 'zustand' => $zustand, 'id' => $bookId]);
 
     echo "Book updated successfully.";
@@ -128,14 +86,14 @@ if (isset($_GET['signout'])) {
         <div class="dropdown">
             <div  class="burger"><p></p></div>
             <div  class="burger"></div>
-            <div  class="burger"></div> 
+            <div  class="burger"></div>
             <div class="dropdown1">
             <div class="dropdown-content">
             <a href="index.php">Home</a><br>
             <a href="Ueber_uns.php">Über Uns</a><br>
             <a href="rechtliches.php">Rechtliches</a><br>
             <a href="login.php">Admin Login</a>
-            </div>  
+            </div>
             </div>
         </div>
     </header>

@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         case 'Email':
             $query .= "email LIKE :search";
         default:
-            $query .= "name LIKE :search";
+            $query .= "benutzername LIKE :search";
             break;
     }
 
