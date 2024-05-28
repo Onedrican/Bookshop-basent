@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $query .= "name LIKE :search";
                 break;
         }
-
+        // Execute the query
         $stmt = $conn->prepare($query);
         $stmt->bindValue(':search', $search, PDO::PARAM_STR);
         $stmt->execute();

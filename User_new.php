@@ -22,8 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $admin = $_POST['admin'];
 
     // Validate the inputs
-    if (strlen($benutzername) < 5 || strlen($benutzername) > 45) {
-        echo "Invalid input. Please enter a string with a length between 5 and 45.";
+    if (strlen($benutzername) < 2 || strlen($benutzername) > 45) {
+        echo "Invalid input. Please enter a string with a length between 2 and 45.";
         return;
     }
     if (strlen($name) < 2 || strlen($name) > 45) {
@@ -38,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Invalid input. Please enter a string with a length of at least 8 and a maximum of 50.";
         return;
     }
-    if (strlen($email) < 5 || strlen($email) > 45) {
-        echo "Invalid input. Please enter a string with a length between 5 and 45.";
+    if (strlen($email) < 5 || strlen($email) > 100) {
+        echo "Invalid input. Please enter a string with a length between 5 and 100.";
         return;
     }
     //Hashing password
@@ -112,11 +112,11 @@ if (isset($_GET['signout'])) {
     <br>
 <div>
 <form method="post">
-    <input type="text" name="Benutzername_add" placeholder="Benutzername" minlength="5" maxlength="45" required><br>
+    <input type="text" name="Benutzername_add" placeholder="Benutzername" minlength="2" maxlength="45" required><br>
     <input type="text" name="Name_add" placeholder="Name" minlength="2" maxlength="45" required><br>
     <input type="text" name="Vorname_add" placeholder="Vorname" minlength="2" maxlength="45" required><br>
     <input type="password" name="Password_add" placeholder="Password min.8" required minlength="8" maxlength="50"><br>
-    <input type="text" name="Email_add" placeholder="Email" required minlength="5" maxlength="45"><br>
+    <input type="email" name="Email_add" placeholder="Email" required minlength="5" maxlength="100"><br>
     <label for="Admin">Admin?</label>
     <input type="radio"id="admin1" name="admin" value="1" required><br>
     <label for="admin1">Ja</label><br>

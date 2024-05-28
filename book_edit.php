@@ -91,6 +91,9 @@ if (isset($_POST['book_id'])) {
 }
 
 
+if (isset($_GET['go_back'])) {
+    header('Location: Book_change.php');
+}
 
 if (isset($_GET['signout'])) {
     //Reset Session variabel
@@ -105,8 +108,8 @@ if (isset($_GET['signout'])) {
         );
     }
 
-    // $_Session= array();
-    // session_destroy();
+    $_SESSION = array();
+    session_destroy();
 
     // Redirect to login
     header('Location: login.php');
@@ -201,6 +204,11 @@ if (isset($_GET['signout'])) {
 
     }
     ?>
+
+    <form method="get">
+    <button type="submit" name='go_back'> Go back</button>
+    </form>
+
 <form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>

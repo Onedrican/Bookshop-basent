@@ -40,13 +40,11 @@
       <input type="submit" name="signin" value="Sign In">
     </div>
   </form>
-    <a href="Pw_vergessen.php">Passwort vergessen?</a>
 </div>
 
 <?php
 include ("includesite.php");
 session_start();
-echo var_dump($_SESSION);
 
 //Connection to the database
 $servername = "127.0.0.1:3306";

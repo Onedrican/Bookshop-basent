@@ -6,49 +6,17 @@ if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
 }
 
 //error_reporting(E_ERROR | E_PARSE);
-//Connection to the database
 
+//Connection to the database
 $servername = "127.0.0.1:3306";
 $username = "rundb";
 $password = "runpass";
 $conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (isset($_POST['book_id'])) {
-    $userid = htmlspecialchars(trim($_POST['user_id']));
-    $benutzername = htmlspecialchars(trim($_POST['Benutzername_add']));
-    $name = htmlspecialchars(trim($_POST['Name_add']));
-    $vorname = htmlspecialchars(trim($_POST['Vorname_add']));
-    $email = htmlspecialchars(trim($_POST['Email_add']));
-    $admin = $_POST['admin'];
-
-    // Validate the inputs
-    if (strlen($benutzername) < 1 || strlen($benutzername) > 50) {
-        echo "Invalid Benutzername input. Please enter a string with a length between 1 and 50.";
-        return;
-    }
-    if (strlen($name) < 1 || strlen($name) > 50) {
-        echo "Invalid Name input. Please enter a string with a length between 1 and 50.";
-        return;
-    }
-    if (strlen($vorname) < 1 || strlen($vorname) > 50) {
-        echo "Invalid Vorname input. Please enter a string with a length between 1 and 50.";
-        return;
-    }
-    if (strlen($email) < 1 || strlen($email) > 100) {
-        echo "Invalid Kurztitle input. Please enter a string with a length between 1 and 100.";
-        return;
-    }
-
-
-
-    $stmt = $conn->prepare("UPDATE benutzer SET katalog = :katalog, nummer = :nummer, kurztitle = :kurztitle, kategorie = :kategorie, verkauft = :verkauft, kaufer = :kaufer, autor = :autor, title = :title, sprache = :sprache, verfasser = :verfasser, zustand = :zustand WHERE id = :id");
-    $stmt->execute(['katalog' => $katalog, 'nummer' => $nummer, 'kurztitle' => $kurztitle, 'kategorie' => $kategorie, 'verkauft' => $verkauft, 'kaufer' => $kaufer, 'autor' => $autor, 'title' => $title, 'sprache' => $sprache, 'verfasser' => $verfasser, 'zustand' => $zustand, 'id' => $bookId]);
-
-    echo "Book updated successfully.";
+if (isset($_GET['go_back'])) {
+    header('Location: User_change.php');
 }
-
-
 
 if (isset($_GET['signout'])) {
     //Reset Session variabel
@@ -63,8 +31,8 @@ if (isset($_GET['signout'])) {
         );
     }
 
-    // $_Session= array();
-    // session_destroy();
+    $_Session= array();
+    session_destroy();
 
     // Redirect to login
     header('Location: login.php');
@@ -100,65 +68,84 @@ if (isset($_GET['signout'])) {
     <br>
     <?php
     if (isset($_GET['id'])) {
-        $bookId = $_GET['id'];
+        $userid = $_GET['id'];
 
         // Fetch the book data from the database
-        $stmt = $conn->prepare("SELECT * FROM buecher WHERE id = :id");
-        $stmt->execute(['id' => $bookId]);
-        $book = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $conn->prepare("SELECT * FROM benutzer WHERE id = :id");
+        $stmt->execute(['id' => $userid]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($book) {
+
+
+
+        if ($user) {
             echo "<form method='post'>
-    <input type='hidden' name='book_id' value='" . $book['id'] . "'>
-
-    <label for='katalog'>Katalog:</label>
-    <input type='number' id='katalog' name='katalog' value='" . $book['katalog'] . "' min='10' max='19' required><br>
-
-    <label for='nummer'>Nummer:</label>
-    <input type='number' id='nummer' name='nummer' min='1' max='999' required value='" . $book['nummer'] . "'><br>
-
-    <label for='kurztitle'>Kurztitle:</label>
-    <textarea id='kurztitle' name='kurztitle' minlength='1' maxlength='999999999999999999999999'>" . $book['kurztitle'] . "</textarea><br>
-
-    <label for='kategorie'>Kategorie:</label>
-    <input type='number' id='kategorie' name='kategorie' value='" . $book['kategorie'] . "' min='1' max='14' required><br>
-
-    <label for='verkauft'>Verkauft (1/0):</label>
-    <input type='number' id='verkauft' name='verkauft' value='" . $book['verkauft'] . "' min='0' max='1' required><br>
-
-    <label for='kaufer'>Käufer:</label>
-    <input type='number' id='kaufer' name='kaufer' value='" . $book['kaufer'] . "' min='0' max='100000' required><br>
-
-    <label for='autor'>Autor:</label>
-    <textarea id='autor' name='autor' maxlength='100' minlength='1' required>" . $book['autor'] . "</textarea><br>
-
-    <label for='title'>Title:</label>
-    <textarea id='title' name='title' minlength='1' maxlength='999999999999999999999999' required>" . $book['title'] . "</textarea><br>
-
-    <label for='sprache'>Sprache:</label>
-    <textarea id='sprache' name='sprache' minlength='0' maxlength='50' required>" . $book['sprache'] . "</textarea><br>
-
-    <label for='verfasser'>Verfasser:</label>
-    <input type='number' id='verfasser' name='verfasser' value='" . $book['verfasser'] . "' min='1' max='6' required><br>
-
-    <label for='zustand'>Zustand:</label>
-    <select name='zustand' id='zustand' required>
-        <option value='" . $book['zustand'] . "'>" . $book['zustand'] . "</option>
-        <option value='M'>M</option>
-        <option value='S'>S</option>
-        <option value='G'>G</option>
-    </select>
+    <input type='hidden' name='user_id' value='" . $user['ID'] . "'>
+   
+     <label for='username'>Benutzername</label>
+     <input type='text' id='username' name='username' value='" . $user['benutzername'] . "' minlength='2' maxlength='45' required><br>
+     
+     <label for='name'>Name</label>
+     <input type='text' id='name' name='name' value='" . $user['name'] . "' minlength='2' maxlength='45' required><br>
+     
+     <label for='vorname'>Vorname</label>
+     <input type='text' id='vorname' name='vorname' value='" . $user['vorname'] . "' minlength='2' maxlength='45' required><br>
+     
+     <label for='email'>E-Mail</label>
+     <input type='email' id='email' name='email' value='" . $user['email'] . "' minlength='5' maxlength='100' required><br>
+     
+        <label for='admin'>Admin?</label>
+        <input type='radio' id='admin' name='admin' value='1' required><br>
+        <label for='admin'>Ja</label><br>
+        <input type='radio' id='admin' name='admin' value='0' required><br>
+        <label for='admin'>Nein</label><br>
 
     <input type='submit' value='Update'>
     </form>";
         } else {
-            echo "Book not found.";
+            echo "User not found.";
         }
     } else {
-        echo "No book ID provided.";
+        echo "No User ID provided.";
+    }
 
+    if (isset($_POST['user_id'])) {
+        $userid = htmlspecialchars(trim($_POST['user_id']));
+        $benutzername = htmlspecialchars(trim($_POST['username']));
+        $name = htmlspecialchars(trim($_POST['name']));
+        $vorname = htmlspecialchars(trim($_POST['vorname']));
+        $email = htmlspecialchars(trim($_POST['email']));
+        $admin = $_POST['admin'];
+
+        // Validate the inputs
+        if (strlen($benutzername) < 2 || strlen($benutzername) > 45) {
+            echo "Invalid Benutzername input. Please enter a string with a length between 2 and 45.";
+            return;
+        }
+        if (strlen($name) < 2 || strlen($name) > 45) {
+            echo "Invalid Name input. Please enter a string with a length between 2 and 50.";
+            return;
+        }
+        if (strlen($vorname) < 2 || strlen($vorname) > 50) {
+            echo "Invalid Vorname input. Please enter a string with a length between 2 and 45.";
+            return;
+        }
+        if (strlen($email) < 5 || strlen($email) > 100) {
+            echo "Invalid Kurztitle input. Please enter a string with a length between 5 and 100.";
+            return;
+        }
+
+        $stmt = $conn->prepare("UPDATE benutzer SET benutzername = :benutzername, name = :name, vorname = :vorname, email = :email, admin = :admin WHERE id = :id");
+        $stmt->execute(['benutzername' => $benutzername, 'name' => $name, 'vorname' => $vorname, 'email' => $email, 'admin' => $admin, 'id' => $userid]);
+
+        echo "User updated successfully.";
     }
     ?>
+
+    <form method="get">
+        <button type="submit" name='go_back'> Go back</button>
+    </form>
+
 <form method="get">
     <button type="submit" name='signout' > Sign Out</button>
 </form>

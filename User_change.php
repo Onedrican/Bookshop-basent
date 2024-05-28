@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     name='id'
                     value='" . $user['ID'] . "'
                     Edit>
-                    Buch ändern
+                    User ändern
             </button>
           </form>";
             echo "</div>";
@@ -89,75 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 }
-
-///error_reporting(E_ERROR | E_PARSE);
-//
-//if (isset($_POST['book_id'])) {
-//    $bookId = htmlspecialchars(trim($_POST['book_id']));
-//
-//
-//    // Validate the inputs
-//    if (!is_numeric($katalog) || $katalog < 10 || $katalog > 19) {
-//        echo "Invalid Katalog input. Please enter a number between 10 and 19.";
-//        return;
-//    }
-//
-//    if (!is_numeric($nummer) || $nummer < 1 || $nummer > 800) {
-//        echo "Invalid Nummer input. Please enter a number between 1 and 800.";
-//        return;
-//    }
-//
-//    if (strlen($kurztitle) < 1 || strlen($kurztitle) > 999999999999999999999999) {
-//        echo "Invalid Kurztitle input. Please enter a string with a length between 1 and 999999999999999999999999.";
-//        return;
-//    }
-//
-//    if (!is_numeric($kategorie) || $kategorie < 1 || $kategorie > 14) {
-//        echo "Invalid Kategorie input. Please enter a number between 1 and 14.";
-//        return;
-//    }
-//
-//    if (!is_numeric($verkauft) || $verkauft < 0 || $verkauft > 1) {
-//        echo "Invalid Verkauft input. Please enter 0(false) or 1(true).";
-//        return;
-//    }
-//
-//    if (!is_numeric($kaufer) || $kaufer < 0 || $kaufer > 100000) {
-//        echo "Invalid Verkauft input. Please enter a number between 1 or 100'000).";
-//        return;
-//    }
-//
-//    if (strlen($autor) < 1 || strlen($autor) > 100) {
-//        echo "Invalid Autor input. Please enter a string with a length between 1 and 100.";
-//        return;
-//    }
-//
-//    if (strlen($title) < 1 || strlen($title) > 999999999999999999999999) {
-//        echo "Invalid Title input. Please enter a string with a length between 1 and 999999999999999999999999.";
-//        return;
-//    }
-//
-//    if (strlen($sprache) < 1 || strlen($sprache) > 50) {
-//        echo "Invalid Sprache input. Please enter a string with a length between 1 and 50.";
-//        return;
-//    }
-//
-//    if (!is_numeric($verfasser) || $verfasser < 1 || $verfasser > 6) {
-//        echo "Invalid Verfasser input. Please enter a number between 1 and 6.";
-//        return;
-//    }
-//
-//    if (!in_array($zustand, ['M', 'S', 'G'])) {
-//        echo "Invalid Zustand input. Please enter either 'M', 'S', or 'G'.";
-//        return;
-//    }
-//
-//    $stmt = $conn->prepare("UPDATE buecher SET katalog = :katalog, nummer = :nummer, kurztitle = :kurztitle, kategorie = :kategorie, verkauft = :verkauft, kaufer = :kaufer, autor = :autor, title = :title, sprache = :sprache, verfasser = :verfasser, zustand = :zustand WHERE id = :id");
-//    $stmt->execute(['katalog' => $katalog, 'nummer' => $nummer, 'kurztitle' => $kurztitle, 'kategorie' => $kategorie, 'verkauft' => $verkauft, 'kaufer' => $kaufer, 'autor' => $autor, 'title' => $title, 'sprache' => $sprache, 'verfasser' => $verfasser, 'zustand' => $zustand, 'id' => $bookId]);
-//
-//    echo "Book updated successfully.";
-//}
-
 
 include ("includesite.php");
 if (isset($_GET['signout'])) {
