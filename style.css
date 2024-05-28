@@ -32,7 +32,15 @@ header {
     font-size: 20px;
     margin: 2%;
 }
-
+a:link{
+    color: white;
+}
+a:visited{
+    color: white;
+}
+a:hover{
+    color: aqua;
+}
 
 #noresults{
     padding: 2%;
@@ -155,6 +163,7 @@ header {
     width: 15%; 
     font-size: 20px;
     margin-top: 0%;
+    color: white;
 }
 .dropdown:hover .dropdown-content {    
     display: block;
@@ -241,4 +250,14 @@ select {
 #title{
     padding-left: 2%;
     font-size: 34px;
+}
+form[name="Katalog_add"]{
+    display: block;
+    justify-content: left;
+    margin-left: 2%;
+}
+form[name="Kurztitle_add"]{
+    display: block;
+    justify-content: left;
+    margin-left: 2%;
 }

@@ -1,5 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <span id = "name">Bookshop BASENT</span>
+        <div class="dropdown">
+            <div  class="burger"><p></p></div>
+            <div  class="burger"></div>
+            <div  class="burger"></div> 
+            <div class="dropdown1">
+            <div class="dropdown-content">
+            <a href="index.php">Home</a><br>
+            <a href="Ueber_uns.php">Über Uns</a><br>
+            <a href="rechtliches.php">Rechtliches</a><br>
+            <a href="login.php">Admin Login</a>
+            </div>  
+            </div>
+        </div>
+    </header>
+    <br>
+<form method="post">
+    <input type="text" name="search" placeholder="Suchen" minlength="1" maxlength="50" required>
+    <select name="sort">
+        <option value="">Sortieren</option>
+        <option value="kurztitle_asc">Name A-Z</option>
+        <option value="kurztitle_desc">Name Z-A</option>
+        <option value="autor_asc">Author A-Z</option>
+        <option value="autor_desc">Author Z-A</option>
+        <option value="nummer_asc">Nummer Aufsteigend</option>
+        <option value="nummer_desc">Number Absteigend</option>
+    </select>
+    <select name="filter">
+        <option value="">Filtern</option>
+        <option value="autor">Author</option>
+        <option value="title">Title</option>
+        <option value="kategorie">Kategorie</option>
+        <option value="kurztitle">Kurztitle</option>
+    </select>
+    <input type="submit" value="Submit">
+</form>
+
+
+
+<form method="get">
+    <button type="submit" name='signout' class="signhh"> Sign Out</button>
+</form>
+
 <?php
-include ("includesite.php");
 session_start();
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
     header('location: login.php');
@@ -131,41 +184,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-<form method="post">
-    <input type="text" name="search" placeholder="Suchen" minlength="1" maxlength="50" required>
-    <select name="sort">
-        <option value="">Sortieren</option>
-        <option value="kurztitle_asc">Name A-Z</option>
-        <option value="kurztitle_desc">Name Z-A</option>
-        <option value="autor_asc">Author A-Z</option>
-        <option value="autor_desc">Author Z-A</option>
-        <option value="nummer_asc">Nummer Aufsteigend</option>
-        <option value="nummer_desc">Number Absteigend</option>
-    </select>
-    <select name="filter">
-        <option value="">Filtern</option>
-        <option value="autor">Author</option>
-        <option value="title">Title</option>
-        <option value="kategorie">Kategorie</option>
-        <option value="kurztitle">Kurztitle</option>
-    </select>
-    <input type="submit" value="Submit">
-</form>
-
-
-
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
-</form>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-include ("includesite.php");
 
 session_start();
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
@@ -102,6 +101,12 @@ if (isset($_GET['signout'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
   <header>
     <span id = "name">Bookshop BASENT</span>
     <div class="dropdown">
@@ -119,14 +124,12 @@ if (isset($_GET['signout'])) {
     </div>
   </header>
   <br>
-    <h1>Füge ein Buch hinzu</h1>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
+    <p id="title">Füge ein Buch hinzu</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh" > Sign Out</button>
+    </form>
 <div>
+<hr>
 <form method="post">
     <input type="number" name="Katalog_add" placeholder="Katalog" min="10" max="19" required><br>
     <input type="text" name="Kurztitle_add" placeholder="Kurztitle" minlength="1" maxlength="100" required><br>
@@ -139,8 +142,6 @@ if (isset($_GET['signout'])) {
     <input type="submit" value="Submit">
 </form>
 </div>
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
-</form>
+
 </body>
 </html>
