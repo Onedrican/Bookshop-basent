@@ -1,4 +1,4 @@
-<span?php
+<?php
 //include ("includesite.php");
 session_start();
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
@@ -56,7 +56,7 @@ if (isset($_POST['signout'])) {
   </header>
 <br>
     <p id="titlea">Adminseite</p>
-    <form method="get">
+    <form method="post">
         <button type="submit" name='signout' class="signhh"> Sign Out</button>
     </form>
 <hr>
