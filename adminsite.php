@@ -1,4 +1,4 @@
-<?php
+<span?php
 //include ("includesite.php");
 session_start();
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
@@ -55,7 +55,11 @@ if (isset($_POST['signout'])) {
     </div>
   </header>
 <br>
-<p id="titlea">Adminseite</p>
+    <p id="titlea">Adminseite</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+<hr>
 <div class="bookwahl">
     <div class= booksh>Bücher verwalten</div> 
     <div class="dropdown1">
@@ -77,10 +81,8 @@ if (isset($_POST['signout'])) {
         </div>  
         </div>
 </div>
-<hr>
-    <form method="post">
-    <button type="submit" name='signout' > Sign Out</button>
-    </form>
+
+   
 
 </body>
 </html>

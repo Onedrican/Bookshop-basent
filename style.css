@@ -95,7 +95,6 @@ header {
     padding-left: 2%;
     font-size: 34px;
     width: 15%;
-    vertical-align: top;
     display: inline-block;
     
 }
@@ -170,6 +169,15 @@ header {
     background-color: rgb(23, 22, 22);
 }
 
+.signhh{
+    display: inline-block;
+    margin-left: 90%;
+    vertical-align: top;
+    font-size: 34px;
+    margin-top: -3%;
+    height: 2%;
+ 
+}
 /* Für search */
 #search1{
     text-align: center;
