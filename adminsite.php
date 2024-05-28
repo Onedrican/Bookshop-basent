@@ -1,11 +1,11 @@
 <?php
-include ("includesite.php");
+//include ("includesite.php");
 session_start();
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
     header('location: login.php');
     die();
 }
-echo var_dump($_SESSION);
+//echo var_dump($_SESSION);
 
 if (isset($_POST['signout'])) {
     //Reset Session variabel
@@ -54,18 +54,20 @@ if (isset($_POST['signout'])) {
         </div>
     </div>
   </header>
+<br>
+<p id="titlea">Adminseite</p>
 <div class="bookwahl">
-        <div  class= booksh>Bücher</div> 
-        <div class="dropdown1">
-        <div class="bookwahl-content">
-        <a href="Book_delete.php">Bücher löschen</a> <br>
-        <a href="Book_change.php">Bücher ändern</a> <br>
-        <a href="Book_add.php">Bücher hinzufügen</a> <br>
-        </div>  
-        </div>
+    <div class= booksh>Bücher verwalten</div> 
+    <div class="dropdown1">
+    <div class="bookwahl-content">
+    <a href="Book_delete.php">Bücher löschen</a> <br>
+    <a href="Book_change.php">Bücher ändern</a> <br>
+    <a href="Book_add.php">Bücher hinzufügen</a> <br>
+    </div>  
+    </div>
 </div>
 <div class="userwahl">
-        <div  class= booksh>user</div> 
+        <div  class= booksh>User verwalten</div> 
         <div class="dropdown1">
         <div class="userwahl-content">
         <a href="User_search.php">User suchen</a> <br>
@@ -75,7 +77,7 @@ if (isset($_POST['signout'])) {
         </div>  
         </div>
 </div>
-
+<hr>
     <form method="post">
     <button type="submit" name='signout' > Sign Out</button>
     </form>

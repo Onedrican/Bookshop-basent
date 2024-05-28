@@ -25,16 +25,21 @@
     </header>
     <br>
 <div>
-  <h1>Sign In</h1>
+  <p id="title">Sign In</p>
   <hr>
-  <form method="post">
+  <form method="post" name="loginpost">
     <div class="mb-3">
-      <label for="username">Username</label>
+      <br>
+      <label for="username">Username</label><br>
       <input type="text" name="username" placeholder="Enter your username" autocomplete="off" required>
+      <br>
+      <br>
     </div>
     <div>
-      <label for="password" >Password</label>
+      <label for="password" >Password</label><br>
       <input type="password" name="password" placeholder="Enter your password" required>
+      <br>
+      <br>
     </div>
     <div>
       <input type="submit" name="signin" value="Sign In">
