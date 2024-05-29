@@ -56,7 +56,7 @@ a:hover{
 .result_box {
     width: 21%;
     float: left;
-    height: 500px;
+    height: 560px;
     text-align: center;
     margin: 2%;
 }
@@ -282,6 +282,43 @@ form[name="hinzufuegen"]{
     margin-left: 2%;
 }
 input[type="number"] {
+    padding: 5px 10px;
+    font-size: 25px;
+    background-color: rgb(23, 22, 22);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: Vesper Libre, serif;
+}
+input[type="radio"] {
+    padding: 5px 10px;
+    font-size: 25px;
+    background-color: rgb(23, 22, 22);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: Vesper Libre, serif;
+}
+input[type="email"] {
+    padding: 5px 10px;
+    font-size: 25px;
+    background-color: rgb(23, 22, 22);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: Vesper Libre, serif;
+}
+input[type="date"] {
+    padding: 5px 10px;
+    font-size: 25px;
+    background-color: rgb(23, 22, 22);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: Vesper Libre, serif;
+}
+
+textarea{
     padding: 5px 10px;
     font-size: 25px;
     background-color: rgb(23, 22, 22);

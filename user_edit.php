@@ -65,7 +65,12 @@ if (isset($_GET['signout'])) {
             </div>
         </div>
     </header>
-    <br>
+    <p id="title">User bearbeiten</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+<div>
+<hr>
     <?php
     if (isset($_GET['id'])) {
         $userid = $_GET['id'];
@@ -77,27 +82,27 @@ if (isset($_GET['signout'])) {
 
 
         if ($user) {
-            echo "<form method='post'>
+            echo "<form method='post' name='hinzufuegen'>
     <input type='hidden' name='user_id' value='" . $user['ID'] . "'>
-   
+   <br>
      <label for='username'>Benutzername</label>
      <input type='text' id='username' name='username' value='" . $user['benutzername'] . "' minlength='2' maxlength='45' required><br>
-     
+     <br>
      <label for='name'>Name</label>
      <input type='text' id='name' name='name' value='" . $user['name'] . "' minlength='2' maxlength='45' required><br>
-     
+     <br>
      <label for='vorname'>Vorname</label>
      <input type='text' id='vorname' name='vorname' value='" . $user['vorname'] . "' minlength='2' maxlength='45' required><br>
-     
+     <br>
      <label for='email'>E-Mail</label>
      <input type='email' id='email' name='email' value='" . $user['email'] . "' minlength='5' maxlength='100' required><br>
-     
-        <label for='admin'>Admin?</label>
-        <input type='radio' id='admin' name='admin' value='1' required><br>
+     <br>
+        <label for='admin'>Admin?</label><br>
+        <input type='radio' id='admin' name='admin' value='1' required>
         <label for='admin'>Ja</label><br>
-        <input type='radio' id='admin' name='admin' value='0' required><br>
+        <input type='radio' id='admin' name='admin' value='0' required>
         <label for='admin'>Nein</label><br>
-
+        <br>
     <input type='submit' value='Update'>
     </form>";
         } else {
@@ -144,8 +149,6 @@ if (isset($_GET['signout'])) {
         <button type="submit" name='go_back'> Go back</button>
     </form>
 
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
-</form>
+
 </body>
 </html>

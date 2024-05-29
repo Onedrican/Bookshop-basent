@@ -1,3 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <span id = "name">Bookshop BASENT</span>
+        <div class="dropdown">
+            <div  class="burger"><p></p></div>
+            <div  class="burger"></div>
+            <div  class="burger"></div> 
+            <div class="dropdown1">
+            <div class="dropdown-content">
+            <a href="index.php">Home</a><br>
+            <a href="Ueber_uns.php">Über Uns</a><br>
+            <a href="rechtliches.php">Rechtliches</a><br>
+            <a href="login.php">Admin Login</a>
+            </div>  
+            </div>
+        </div>
+    </header>
+    <br>
+    <p id="titlea">Neuer User</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+    <hr>
+<div>
+    <form method="post" name="hinzufuegen">
+        <label for="Geb">Geburtsdatum</label>
+        <input type="date" id="Geb" name="Geburtstag" required><br><br>
+        <input type="text" name="Vorname_add" placeholder="Vorname" minlength="2" maxlength="45" required><br><br>
+        <input type="text" name="Name_add" placeholder="Nachname" minlength="2" maxlength="45" required><br><br>
+
+        <input type="text" name="Email_add" placeholder="E-Mail" minlength="5" maxlength="45" required><br><br>
+
+        <label for="Kontakt">Kontakt per Email erwünscht?</label><br>
+        <input type="radio"id="1" name="Kontakt" value="1" required>
+        <label for="1">Ja</label><br>
+        <input type="radio" id="0" name="Kontakt" value="0" required>
+        <label for="0">Nein</label><br><br>
+
+        <label for="Geschlecht">Geschlecht</label><br>
+        <select id="Geschlecht" name="Geschlecht_add" size="2" required>
+            <option value="M">Man</option>
+            <option value="W">Frau</option>
+        </select><br><br>
+        <label for="Datum">Mitglied Seit</label>
+        <input type="date" id="Datum" name="MitgliedSeit" required><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
 <?php
 session_start();
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
@@ -74,7 +131,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-include ("includesite.php");
 if (isset($_GET['signout'])) {
     //Reset Session variabel
     $_SESSION = array();
@@ -96,60 +152,6 @@ if (isset($_GET['signout'])) {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <span id = "name">Bookshop BASENT</span>
-        <div class="dropdown">
-            <div  class="burger"><p></p></div>
-            <div  class="burger"></div>
-            <div  class="burger"></div> 
-            <div class="dropdown1">
-            <div class="dropdown-content">
-            <a href="index.php">Home</a><br>
-            <a href="Ueber_uns.php">Über Uns</a><br>
-            <a href="rechtliches.php">Rechtliches</a><br>
-            <a href="login.php">Admin Login</a>
-            </div>  
-            </div>
-        </div>
-    </header>
-    <br>
-<div>
-    <form method="post">
-        <label for="Geb">Geburtsdatum</label>
-        <input type="date" id="Geb" name="Geburtstag" required>
-        <input type="text" name="Vorname_add" placeholder="Vorname" minlength="2" maxlength="45" required><br>
-        <input type="text" name="Name_add" placeholder="Nachname" minlength="2" maxlength="45" required><br>
 
-        <input type="text" name="Email_add" placeholder="E-Mail" minlength="5" maxlength="45" required><br>
-
-        <label for="Kontakt">Kontakt per Email erwünscht?</label>
-        <input type="radio"id="1" name="Kontakt" value="1" required><br>
-        <label for="1">Ja</label><br>
-        <input type="radio" id="0" name="Kontakt" value="0" required>
-        <label for="0">Nein</label><br>
-
-        <label for="Geschlecht">Geschlecht</label>
-        <select id="Geschlecht" name="Geschlecht_add" size="2" required>
-            <option value="M">Man</option>
-            <option value="W">Frau</option>
-        </select>
-        <label for="Datum">Mitglied Seit</label>
-        <input type="date" id="Datum" name="MitgliedSeit" required>
-        <input type="submit" value="Submit">
-    </form>
-</div>
-
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
-</form>
 </body>
 </html>

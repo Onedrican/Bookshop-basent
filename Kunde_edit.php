@@ -65,8 +65,13 @@ if (isset($_GET['signout'])) {
         </div>
     </div>
 </header>
-<br>
-
+</header>
+    <p id="title">User bearbeiten</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+<div>
+<hr>
 <?php
 if (isset($_GET['kid'])) {
     $kundenid = $_GET['kid'];
@@ -168,8 +173,5 @@ if (isset($_POST['kunden_id'])) {
     <button type="submit" name='go_back'> Go back</button>
 </form>
 
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
-</form>
 </body>
 </html>

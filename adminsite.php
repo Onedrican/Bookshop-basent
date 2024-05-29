@@ -73,7 +73,7 @@ if (isset($_POST['signout'])) {
         <div class="userwahl-content">
         <a href="User_search.php">User suchen</a> <br>
         <a href="User_delete.php">User löschen</a> <br>
-        <a href="User_change.php">User ändern</a> <br>
+        <a href="User_change.php">User bearbeiten</a> <br>
         <a href="User_new.php">Neuer User</a> <br> 
         </div>
 </div>

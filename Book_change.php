@@ -24,7 +24,12 @@
             </div>
         </div>
     </header>
+    <p id="title">Füge ein Buch hinzu</p>
     <br>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+<hr>
 <form method="post">
     <input type="text" name="search" placeholder="Suchen" minlength="1" maxlength="50" required>
     <select name="sort">
@@ -48,9 +53,7 @@
 
 
 
-<form method="get">
-    <button type="submit" name='signout' class="signhh"> Sign Out</button>
-</form>
+
 
 <?php
 session_start();

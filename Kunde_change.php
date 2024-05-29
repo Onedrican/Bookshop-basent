@@ -25,6 +25,11 @@
         </div>
     </header>
     <br>
+    <p id="titlea">User bearbeiten</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+    <hr>
 
     <form method="post">
         <input type="text" name="search" placeholder="Suchen" minlength="1" maxlength="50" required>
@@ -38,9 +43,7 @@
     </form>
 
 
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
-</form>
+
 
     <?php
     session_start();

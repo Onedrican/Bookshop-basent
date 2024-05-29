@@ -142,6 +142,12 @@ if (isset($_GET['signout'])) {
             </div>
         </div>
     </header>
+    <p id="title">Buch ändern</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+<div>
+<hr>
     <br>
     <?php
     if (isset($_GET['id'])) {
@@ -153,39 +159,39 @@ if (isset($_GET['signout'])) {
         $book = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($book) {
-            echo "<form method='post'>
+            echo "<form method='post' name='hinzufuegen'>
     <input type='hidden' name='book_id' value='" . $book['id'] . "'>
 
     <label for='katalog'>Katalog:</label>
     <input type='number' id='katalog' name='katalog' value='" . $book['katalog'] . "' min='10' max='19' required><br>
-
+<br>
     <label for='nummer'>Nummer:</label>
     <input type='number' id='nummer' name='nummer' min='1' max='999' required value='" . $book['nummer'] . "'><br>
-
+<br>
     <label for='kurztitle'>Kurztitle:</label>
     <textarea id='kurztitle' name='kurztitle' minlength='1' maxlength='999999999999999999999999'>" . $book['kurztitle'] . "</textarea><br>
-
+<br>
     <label for='kategorie'>Kategorie:</label>
     <input type='number' id='kategorie' name='kategorie' value='" . $book['kategorie'] . "' min='1' max='14' required><br>
-
+<br>
     <label for='verkauft'>Verkauft (1/0):</label>
     <input type='number' id='verkauft' name='verkauft' value='" . $book['verkauft'] . "' min='0' max='1' required><br>
-
+<br>
     <label for='kaufer'>Käufer:</label>
     <input type='number' id='kaufer' name='kaufer' value='" . $book['kaufer'] . "' min='0' max='100000' required><br>
-
+<br>
     <label for='autor'>Autor:</label>
     <textarea id='autor' name='autor' maxlength='100' minlength='1' required>" . $book['autor'] . "</textarea><br>
-
+<br>
     <label for='title'>Title:</label>
     <textarea id='title' name='title' minlength='1' maxlength='999999999999999999999999' required>" . $book['title'] . "</textarea><br>
-
+<br>
     <label for='sprache'>Sprache:</label>
     <textarea id='sprache' name='sprache' minlength='0' maxlength='50' required>" . $book['sprache'] . "</textarea><br>
-
+<br>
     <label for='verfasser'>Verfasser:</label>
     <input type='number' id='verfasser' name='verfasser' value='" . $book['verfasser'] . "' min='1' max='6' required><br>
-
+<br>
     <label for='zustand'>Zustand:</label>
     <select name='zustand' id='zustand' required>
         <option value='" . $book['zustand'] . "'>" . $book['zustand'] . "</option>
@@ -193,7 +199,7 @@ if (isset($_GET['signout'])) {
         <option value='S'>S</option>
         <option value='G'>G</option>
     </select>
-
+<br>
     <input type='submit' value='Update'>
     </form>";
         } else {
@@ -209,8 +215,6 @@ if (isset($_GET['signout'])) {
     <button type="submit" name='go_back'> Go back</button>
     </form>
 
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
-</form>
+
 </body>
 </html>

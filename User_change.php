@@ -1,3 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <span id = "name">Bookshop BASENT</span>
+        <div class="dropdown">
+            <div  class="burger"><p></p></div>
+            <div  class="burger"></div>
+            <div  class="burger"></div> 
+            <div class="dropdown1">
+            <div class="dropdown-content">
+            <a href="index.php">Home</a><br>
+            <a href="Ueber_uns.php">Über Uns</a><br>
+            <a href="rechtliches.php">Rechtliches</a><br>
+            <a href="login.php">Admin Login</a>
+            </div>  
+            </div>
+        </div>
+    </header>
+    <br>
+    <p id="titlea">User bearbeiten</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+    <hr>
+    <form method="post">
+        <input type="text" name="search" placeholder="Suchen" maxlength="50" required>
+
+        <select name="filter">
+            <option value="">Filtern</option>
+            <option value="ID">Id</option>
+            <option value="Username">Username</option>
+            <option value="Name">Nachname</option>
+            <option value="Vorname">Vorname</option>
+            <option value="Email">Email</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+
 <?php
 session_start();
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
@@ -90,7 +136,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-include ("includesite.php");
 if (isset($_GET['signout'])) {
     //Reset Session variabel
     $_SESSION = array();
@@ -112,50 +157,5 @@ if (isset($_GET['signout'])) {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <span id = "name">Bookshop BASENT</span>
-        <div class="dropdown">
-            <div  class="burger"><p></p></div>
-            <div  class="burger"></div>
-            <div  class="burger"></div> 
-            <div class="dropdown1">
-            <div class="dropdown-content">
-            <a href="index.php">Home</a><br>
-            <a href="Ueber_uns.php">Über Uns</a><br>
-            <a href="rechtliches.php">Rechtliches</a><br>
-            <a href="login.php">Admin Login</a>
-            </div>  
-            </div>
-        </div>
-    </header>
-    <br>
-
-    <form method="post">
-        <input type="text" name="search" placeholder="Suchen" maxlength="50" required>
-
-        <select name="filter">
-            <option value="">Filtern</option>
-            <option value="ID">Id</option>
-            <option value="Username">Username</option>
-            <option value="Name">Nachname</option>
-            <option value="Vorname">Vorname</option>
-            <option value="Email">Email</option>
-        </select>
-        <input type="submit" value="Submit">
-    </form>
-
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
-</form>
 </body>
 </html>

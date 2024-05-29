@@ -23,7 +23,11 @@
             </div>
         </div>
     </header>
-    <br>
+    <p id="titlea">Kunden löschen</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+    <hr>
 <form method="post">
     <input type="text" name="search" placeholder="Suchen" minlength="1" maxlength="50" required>
     <select name="filter">
@@ -33,10 +37,6 @@
         <option value="email">Email</option>
     </select>
     <input type="submit" value="Submit">
-</form>
-
-<form method="get">
-    <button type="submit" name='signout' > Sign Out</button>
 </form>
 
 <?php
@@ -124,7 +124,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-include ("includesite.php");
 if (isset($_GET['signout'])) {
     //Reset Session variabel
     $_SESSION = array();
