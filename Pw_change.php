@@ -24,21 +24,24 @@
         </div>
     </header>
     <br>
+    <p id="titlea">Passwort ändern</p>
+    <form method="get">
+        <button type="submit" name='signout' class="signhh"> Sign Out</button>
+    </form>
+    <hr>
 <div>
-<form method="post">
-
-    <input type="text" name="username" placeholder="Benutzername"  minlength="5" maxlength="45" required>
-    <input type="password" name="oldPw" placeholder="Altes Passwort min.8" minlength="8" maxlength="50" required>
-    <input type="password" name="newPw" placeholder="Neues Passwort min.8" minlength="8" maxlength="50" required>
+<form method="post" name="hinzufuegen">
+    <br>
+    <input type="text" name="username" placeholder="Benutzername"  minlength="5" maxlength="45" required> <br><br>
+    <input type="password" name="oldPw" placeholder="Altes Passwort min.8" minlength="8" maxlength="50" required> <br><br>
+    <input type="password" name="newPw" placeholder="Neues Passwort min.8" minlength="8" maxlength="50" required> <br><br>
     <input type="submit" name="submit" value="Submit">
 
 </form>
 </div>
 
 <?php
-include ("includesite.php");
-
-//error_reporting(E_ERROR | E_PARSE);
+error_reporting(E_ERROR | E_PARSE);
 
 //Connection to the database
 $servername = "127.0.0.1:3306";

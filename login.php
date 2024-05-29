@@ -50,6 +50,7 @@
 <?php
 //include ("includesite.php");
 session_start();
+error_reporting(E_ERROR | E_PARSE);
 
 //Connection to the database
 $servername = "127.0.0.1:3306";

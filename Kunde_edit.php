@@ -73,6 +73,7 @@ if (isset($_GET['signout'])) {
 <div>
 <hr>
 <?php
+error_reporting(E_ERROR | E_PARSE);
 if (isset($_GET['kid'])) {
     $kundenid = $_GET['kid'];
 
@@ -81,6 +82,7 @@ if (isset($_GET['kid'])) {
     $stmt->execute(['kid' => $kundenid]);
     $kunden = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // Display the form
     if ($kunden) {
         echo "<form method='post'>
     <input type='hidden' name='kunden_id' value='" . $kunden['kid'] . "'>
@@ -162,6 +164,7 @@ if (isset($_POST['kunden_id'])) {
         return;
     }
 
+    //Update the Kunden
     $stmt = $conn->prepare("UPDATE kunden SET vorname = :vorname, name = :name, geburtstag = :geburtstag, geschlecht = :geschlecht, email = :email, kunde_seit = :kunde_seit, kontaktpermail = :kontakt WHERE kid = :kid");
     $stmt->execute(['vorname' => $vorname, 'name' => $name, 'geburtstag' => $geburtstag, 'geschlecht' => $geschlecht, 'email' => $email, 'kunde_seit' => $kunde_seit, 'kontakt' => $kontakt, 'kid' => $kudenid]);
 

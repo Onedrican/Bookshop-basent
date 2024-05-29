@@ -74,7 +74,8 @@ if (isset($_POST['signout'])) {
         <a href="User_search.php">User suchen</a> <br>
         <a href="User_delete.php">User löschen</a> <br>
         <a href="User_change.php">User bearbeiten</a> <br>
-        <a href="User_new.php">Neuer User</a> <br> 
+        <a href="User_new.php">Neuer User</a> <br>
+        <a href="Pw_change.php">Passwort ändern</a>
         </div>
 </div>
 <div class="kundewahl">

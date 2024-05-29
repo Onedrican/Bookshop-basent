@@ -327,3 +327,14 @@ textarea{
     cursor: pointer;
     font-family: Vesper Libre, serif;
 }
+input[type="text"] {
+    padding: 5px 10px;
+    font-size: 25px;
+    background-color: rgb(23, 22, 22);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: Vesper Libre, serif;
+    max-width: 300px;
+    max-height: 50px
+}

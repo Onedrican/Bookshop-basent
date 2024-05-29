@@ -40,6 +40,7 @@
 </form>
 
 <?php
+error_reporting(E_ERROR | E_PARSE);
 session_start();
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] === false) {
     header('location: login.php');
@@ -52,6 +53,7 @@ $password = "runpass";
 $conn = new PDO("mysql:host=$servername;dbname=books", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+// See if Delete button was clicked
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['delete'])) {
         $kundeID = $_POST['delete'];
