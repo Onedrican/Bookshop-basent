@@ -62,25 +62,32 @@ if (isset($_POST['signout'])) {
 <hr>
 <div class="bookwahl">
     <div class= booksh>Bücher verwalten</div> 
-    <div class="dropdown1">
     <div class="bookwahl-content">
     <a href="Book_delete.php">Bücher löschen</a> <br>
     <a href="Book_change.php">Bücher ändern</a> <br>
     <a href="Book_add.php">Bücher hinzufügen</a> <br>
     </div>  
-    </div>
 </div>
 <div class="userwahl">
         <div  class= booksh>User verwalten</div> 
-        <div class="dropdown1">
         <div class="userwahl-content">
         <a href="User_search.php">User suchen</a> <br>
         <a href="User_delete.php">User löschen</a> <br>
         <a href="User_change.php">User ändern</a> <br>
-        <a href="User_new.php">Neuer User</a> <br>
-        </div>  
+        <a href="User_new.php">Neuer User</a> <br> 
         </div>
 </div>
+<div class="kundewahl">
+        <div  class= booksh>Kunden verwalten</div> 
+        <div class="kundewahl-content">
+        <a href="Kunde_add.php">Kunde Hinzufügen</a> <br>
+        <a href="Kunde_change.php">Kunde ändern</a> <br>
+        <a href="Kunde_delete.php">Kunde delete</a> <br>
+        </div>
+</div>
+
+
+
 
    
 

@@ -130,16 +130,36 @@ if (isset($_GET['signout'])) {
     </form>
 <div>
 <hr>
-<form method="post">
-    <input type="number" name="Katalog_add" placeholder="Katalog" min="10" max="19" required><br>
-    <input type="text" name="Kurztitle_add" placeholder="Kurztitle" minlength="1" maxlength="100" required><br>
-    <input type="number" name="Kategorie_add" placeholder="Kategorie 1-14" min="1" max="14" required><br>
-    <input type="text" name="Autor_add" placeholder="Autor" required minlength="1" maxlength="50"><br>
-    <input type="text" name="Title_add" placeholder="Title" required minlength="1" maxlength="50"><br>
-    <input type="text" name="Zustand_add" placeholder="Zustand M/S/G" pattern="[MSG]" required><br>
-    <input type="number" name="Verfasser_add" placeholder="Verfasser 1-6" min="1" max="6" required><br>
-
-    <input type="submit" value="Submit">
+<form method="post" name="hinzufuegen">
+    <div>
+        <input type="number" name="Katalog_add" placeholder="Katalog" min="10" max="19" required><br>
+        <br>
+    </div>
+    <div>
+        <input type="text" name="Kurztitle_add" placeholder="Kurztitle" minlength="1" maxlength="100" required><br>
+        <br>
+    </div>
+    <div>
+        <input type="number" name="Kategorie_add" placeholder="Kategorie 1-14" min="1" max="14" required><br>
+        <br>
+    </div>
+    <div>
+        <input type="text" name="Autor_add" placeholder="Autor" required minlength="1" maxlength="50"><br>
+        <br>
+    </div>
+    <div>
+        <input type="text" name="Title_add" placeholder="Title" required minlength="1" maxlength="50"><br>
+        <br>
+    </div>
+    <div>
+        <input type="text" name="Zustand_add" placeholder="Zustand M/S/G" pattern="[MSG]" required><br>
+        <br>
+    </div>
+    <div>
+        <input type="number" name="Verfasser_add" placeholder="Verfasser 1-6" min="1" max="6" required><br>
+    </div>
+    <br>
+    <input type="submit" value="Bestätigen">
 </form>
 </div>
 
