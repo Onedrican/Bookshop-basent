@@ -94,6 +94,7 @@
         $stmt->execute();
         //Fetch the results
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         foreach ($results as $index => $kunde) {
             $results[$index]['kontaktpermail'] = $kunde['kontaktpermail'] == 1 ? 'Ja' : 'Nein';
         }
@@ -114,7 +115,7 @@
                 echo "<p>Konakt per E-Mail erwünscht: " . $kunde['kontaktpermail'] . "</p>";
                 echo "<form action='Kunde_edit.php' method='GET'>
             <button type='submit'
-                    name='id'
+                    name='kid'
                     value='" . $kunde['kid'] . "'
                     Edit>
                     User ändern
